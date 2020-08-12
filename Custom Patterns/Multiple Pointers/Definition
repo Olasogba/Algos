@@ -1,0 +1,6 @@
+Creating pointers or values that correspond to an index or position and
+move towards the beginning, end or middle based on a certain condition
+
+Very effecient for solving problems with minimal space complexity as well.
+
+Usually we're looking for a pair and we use two references
