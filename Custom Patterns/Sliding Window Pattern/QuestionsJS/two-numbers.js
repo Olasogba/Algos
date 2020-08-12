@@ -1,3 +1,0 @@
-`
-    Given two numbers, blah blah...
-`
