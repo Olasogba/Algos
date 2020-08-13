@@ -27,7 +27,7 @@ log = (...val) => console.log(val)
 function areSimilar(a, b) {
    // compare each element of both arrays
    // save the indexes whose elements are not the same
-   // this indexes must either total 2 for one valid swap.
+   // this indexes must total 2 for one valid swap.
    let ids = []
    
    for(let i=0; i<a.length; i++) {
