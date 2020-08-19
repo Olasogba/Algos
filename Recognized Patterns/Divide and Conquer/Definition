@@ -1,0 +1,4 @@
+THis pattern inolves dividing a data set (array, tree, string. linked list, etc) into smaller chunks and then
+repeating the process with a subset of data
+
+This pattern can tremendously decrease time complexity
