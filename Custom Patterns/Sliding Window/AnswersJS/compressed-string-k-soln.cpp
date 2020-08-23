@@ -84,16 +84,16 @@ public:
 int main(void){
 
     Solution *s=new Solution;
-    vector<string> msg{"something here"};
+    
     cout<<s->compress("ABBBCCDDCCC",3)<<endl;
     cout<<s->compress("AAAAAAAAAAABXXAAAAAAAAAA", 3)<<endl;
     cout<<s->compress("ABCDDDEFG", 2)<<endl;
-    // cout<<s->compress("A",0)<<endl;
-    // cout<<s->compress("ABC",0)<<endl;
-    // cout<<s->compress("AAABBCCC",2)<<endl;
-    // cout<<s->compress("AAABBDCCC",3)<<endl;
-    // cout<<s->compress("AAABBDAAAAAA",3)<<endl;
-    // cout<<s->compress("AAABBDAAAAAAA",3)<<endl;
+    cout<<s->compress("A",0)<<endl;
+    cout<<s->compress("ABC",0)<<endl;
+    cout<<s->compress("AAABBCCC",2)<<endl;
+    cout<<s->compress("AAABBDCCC",3)<<endl;
+    cout<<s->compress("AAABBDAAAAAA",3)<<endl;
+    cout<<s->compress("AAABBDAAAAAAA",3)<<endl;
     
     return 0;
 }

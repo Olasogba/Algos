@@ -1,0 +1,30 @@
+A method for solving complex problem by breking it down into a collection
+of simpler subproblems, solving each of those problems just once, and 
+storing their solutions (via memoization or tabulation)
+
+This pattern only works with _optimal substructure_ and _overlapping 
+subproblems_
+
+- Overlapping Subproblems: A problem us said to have overlapping 
+  subproblems if it can be broken down into subproblems which are reused
+  (repeated) several times
+
+- Optimal Substructure: A problem us said to have optimal substructure if an
+  optimal solution can/must be constructed from optimal solutions of its
+  subproblems => fib(5) = fib(4) + fib(3)
+
+
+
+---
+
+- Fibonnaci Sequence: Every number after the first two is the sum of the
+  two preceding ones -> 1 1 2 3 5 8 13...
+
+
+MEMOIZATION: Storing the results of expensive function calls
+(into an array, table, object, etc) and returning the cached result when the
+ same inputs occur again.
+
+TABULATION: Storing the result of a previous result in a 'table' (usually)
+an array. Usually done using iteration. Better space complexity can be
+achieved using tabulation

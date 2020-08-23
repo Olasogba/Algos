@@ -134,7 +134,7 @@ int main(void){
 // THEN
 
 // each day
-// identify 5 problems under a pattern.
+// identify 5 problems under a pattern. (https://leetcode.com/problemset/all/?topicSlugs=sliding-window)
 // THEN
 // watch the video, understand the concept, then attempt these problems
 
