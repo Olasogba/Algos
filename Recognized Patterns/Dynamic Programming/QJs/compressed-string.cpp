@@ -60,7 +60,7 @@ public:
     function<int(int, int)> dp = [&](int i, int k) -> int {
       if (k < 0) return n;
       if (i + k >= n) return 0;
-      // referencing the result of a computation
+      
       int& ans = cache[i][k];
       
       if (ans != -1) return ans;
@@ -69,8 +69,6 @@ public:
       int len = 0;
       int same = 0;
       int diff = 0;
-      // start from the first element
-      // iterate till the last checking for the new length 
       for (int j = i; j < n && diff <= k; ++j) {
         if (s[j] == s[i] && ++same) {
           if (same <= 2 || same == 10 || same == 100) ++len;
@@ -92,7 +90,7 @@ int main(void){
     Solution *s=new Solution;
 
     
-    cout<<s->getLengthOfOptimalCompression("aaabbccc",2)<<endl;
+    cout<<s->getLengthOfOptimalCompression("aaba",2)<<endl;
     // cout<<s->getLengthOfOptimalCompression("AAAAAAAAAAABXXAAAAAAAAAA", 3)<<endl;
     // cout<<s->getLengthOfOptimalCompression("ABCDDDEFG", 2)<<endl;
     // cout<<s->getLengthOfOptimalCompression("A",0)<<endl;

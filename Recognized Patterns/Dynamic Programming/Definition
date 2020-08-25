@@ -1,6 +1,9 @@
-A method for solving complex problem by breking it down into a collection
+D1: A method for solving complex problem by breking it down into a collection
 of simpler subproblems, solving each of those problems just once, and 
 storing their solutions (via memoization or tabulation)
+
+D2: An algorithmic techinque which is usually based on a recurrent Formula
+    and one (!or some) starting states
 
 This pattern only works with _optimal substructure_ and _overlapping 
 subproblems_
@@ -9,11 +12,16 @@ subproblems_
   subproblems if it can be broken down into subproblems which are reused
   (repeated) several times
 
-- Optimal Substructure: A problem us said to have optimal substructure if an
+- Optimal Substructure: A problem is said to have optimal substructure if an
   optimal solution can/must be constructed from optimal solutions of its
   subproblems => fib(5) = fib(4) + fib(3)
 
+WHEN TO USE
+• Finding an optimal solution: We want to find a solution that is as large
+as possible or as small as possible.
 
+• Counting the number of solutions: We want to calculate the total number of 
+  possible solutions.
 
 ---
 
@@ -28,3 +36,21 @@ MEMOIZATION: Storing the results of expensive function calls
 TABULATION: Storing the result of a previous result in a 'table' (usually)
 an array. Usually done using iteration. Better space complexity can be
 achieved using tabulation
+
+---
+
+APPROACH
+1. Formulate the problem recursively so that the solution to the problem can
+   be calculated from solutions to smaller subproblems. i.e identify the
+   recursive problem. i.e identify the state that we seek a solution for,
+   then proceed to draw smaller states from the state till we reach a base
+   state
+    i.e
+    a. Find a state for which an optimal solution is found and with the help
+       which we can find the optimal solution for the next state.
+    
+    b. For finding a state, we need to first find all smaller states. These
+       smaller states are further broken down till we reach a base case were
+       an optimal solution is found, with the help of which we can find the
+       optimal solution for the upper state.
+2. 

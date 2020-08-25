@@ -8,7 +8,7 @@
                 "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}"
+                "C:\\Users\\User\\Desktop\\Algorithm Mastery\\exes\\${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
