@@ -23,7 +23,7 @@ function solveRecurse(x) {
     return best;
 }
 
-log(solveRecurse(1))
+log(solveRecurse(5))
 
 function solveIterative(n) {
     value[0] = 0
@@ -40,4 +40,4 @@ function solveIterative(n) {
     return value[n]
 }
 
-log(solveIterative(1))
+log(solveIterative(5))
