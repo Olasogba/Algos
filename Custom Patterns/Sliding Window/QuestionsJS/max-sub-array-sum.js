@@ -13,30 +13,28 @@
 log = (val) => console.log(val)
 
 function calc(arr, n) {
-    // get the sum of the first 4 elements - thats the window
-    // set that sum to be the max value
-    // subtract the first element and add the element after the last element
-    // if greater, make new max
-    // repeat process till you reach array end
-    if(!arr.length) return log(null)
-    let maxSum = 0
-    let currentSum = 0
+    // get the sum of the first n elements
+    // then subtract the initial and add the next
+    if(n > arr.length) return null
+    let max = 0
+    let current = 0
 
     for(let i=0; i<n; i++) {
-        maxSum += arr[i]
+        max += arr[i]
     }
+    current = max
 
-    currentSum = maxSum
     for(let i=n; i<arr.length; i++) {
-        currentSum = currentSum - arr[i-n] + arr[i]
-        maxSum = Math.max(currentSum, maxSum)
+        current = current - arr[i-n] + arr[i]
+        max = Math.max(max, current)
     }
 
-    return log(maxSum)
+    return max;
 }
 
-calc([1,2,5,2,8,1,5],4)
-calc([1,5,2,8,1,5],2)
-calc([4,2,1,6],1)
-calc([4,2,1,6,2,4], 4)
-calc([], 4)
+log(calc([1,2,5,2,8,1,5],4))
+log(calc([1,5,2,8,1,5],4))
+log(calc([4,2,1,6],1))
+log(calc([4,2,1,6,2,4], 4))
+log(calc([], 4))
+log(calc([4,2,1,6],1))

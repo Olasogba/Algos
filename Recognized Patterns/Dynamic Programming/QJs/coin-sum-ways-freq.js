@@ -7,7 +7,7 @@ log = (val) => console.log(val)
 
 */
 
-let coins = [1,3,4,9,7,3,2,4,6,7,4,3,5,6,8]
+let coins = [1,3,4,9,7,3,2,4,6,7,1,1,4,3,5,6,8]
 
 /**
  * Total no of ways for sum n would be for each coin, the total no of (x-coin) => 
@@ -54,8 +54,8 @@ function solveIterative(x) {
     return cache[x]
 }
 
-log(solveRecurse(30))
-log(solveIterative(30))
+log(solveRecurse(12))
+log(solveIterative(12))
 
 
 
