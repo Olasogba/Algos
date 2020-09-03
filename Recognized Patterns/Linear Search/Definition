@@ -1,0 +1,3 @@
+How do we search?
+The simplest way to search for a value is to look at every element in the 
+array and check if it's the value that we want

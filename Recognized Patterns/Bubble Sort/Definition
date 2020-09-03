@@ -1,0 +1,24 @@
+Bubble Sort: A sorting algorithm where the largest values bubble up to the
+top.
+
+Compares two values, if the second is larger than the first, we swap till
+we reach the end of the array, we repeat the process till we can no longer
+swap
+
+---
+
+Before we sort, we must swap!
+
+Many sorting algorithms involve some type of swapping functionality
+(e.g. swapping two numbers to put them in order)
+// ES5
+function swap(arr, idx1, idx2) {
+    var temp = arr[idx1]
+    arr[idx1] = arr[idx2]
+    arr[idx2] = arr[idx1]
+}
+
+// ES6
+const wap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx1]] = [arr[idx2], arr[idx1]]
+}

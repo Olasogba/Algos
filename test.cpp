@@ -128,6 +128,7 @@ int main(void){
     return ans
 }
 
+/**
 
 // solve and understand these guys\' own
 
@@ -136,7 +137,11 @@ int main(void){
 // each day
 // identify 5 problems under a pattern. (https://leetcode.com/problemset/all/?topicSlugs=sliding-window)
 // THEN
-// watch the video, understand the concept, then attempt these problems
+// watch the video, understand the concept, then attempt these problems using a timer
+// sites: 
+https://app.codility.com/programmers/lessons/17-dynamic_programming/
+https://projecteuler.net/?utm_medium=email
+https://www.hackerrank.com/?utm_medium=email
 
 
 // then

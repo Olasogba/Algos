@@ -26,6 +26,59 @@
  * - string S contains only letters 'a' and 'b'
  */
 
+ /**
+  * // edge cases first
+  * 
+  * then
+  * 
+  * 
+  * since the no of 'a's would be divisible by 3
+  * using a frequency counter
+  * each time we reach two times the partition, we add up the frequency of that partition
+  */
+
+  function ways(string) {
+    let countOfA = (string.match(/a/g) || []).length // no of a in the string
+
+    if(!countOfA) {
+      // no 'a's present
+      return (string.length - 2)*(string.length - 1) / 2
+    }
+
+    if(countOfA % 3 != 0) return 0 // non divisible
+
+
+    let map = new Map() // where to store the frequency occurence
+
+    let result = 0, partition = countOfA/3, frequency = 0
+    for(let char of string) {
+      frequency += char == 'a' ? 1 : 0
+
+      if(frequency == 2*partition) result += map.get(partition)
+
+      if(map.get(frequency)) map.set(frequency, frequency+1)
+      else
+      map.set(frequency, 1)
+    }
+
+    return result
+  }
+
+  log = (val)=>console.log(val)
+  log(ways('babaa'))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  /**
   * Because we know that freq a can be split in three equal parts

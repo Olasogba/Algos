@@ -1,0 +1,9 @@
+* Binary Search only works on sorted arrays.
+
+Time Complexity:
+- Worst and Average Case: O(log n)
+  Log example: log(8) = 3; 2 to power 3 == 8
+  The Logarithm of a number roughly measures the number of times you 
+  can divide that number by 2 befor you get a value that's less than
+  or equal to one.
+- Best Case: O(1)
