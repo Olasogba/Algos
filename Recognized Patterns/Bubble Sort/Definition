@@ -22,3 +22,7 @@ function swap(arr, idx1, idx2) {
 const wap = (arr, idx1, idx2) => {
     [arr[idx1], arr[idx1]] = [arr[idx2], arr[idx1]]
 }
+
+---
+
+Time complexity: O(n^2)
