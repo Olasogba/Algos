@@ -1,0 +1,2 @@
+- Almost identical to Single Linked Lists, except that every node has another
+  pointer, to the previous node!
