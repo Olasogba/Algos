@@ -1,0 +1,47 @@
+What is a Stack?
+- A LIFO data structure!
+
+- The last element added to the stack will be the first element removed
+  from the stack
+
+USED IN:
+- Managing function invocations
+- Undo / Redo
+- Routing (the history object) is treated like a stack!
+- Tree/Graph algorithms
+
+WAYS TO IMPLEMENT
+- Array Implementation (easiest) - push/pop || shift/unshift (v!)
+- Linked List Implementation
+- Writing from scratch
+
+BIG O of STACKS
+- Insertion - O(1)
+- Removal - O(1)
+- Searching - O(N) -> you should use some other data structure
+- Access - O(N) -> Stacks prioritize only insertion and removal
+
+
+
+---
+
+
+
+What is a Queue?
+- A FIFO data structure!
+
+- The first element added to the stack will be the first element removed
+  from the stack
+
+USED IN:
+- Background Tasks
+- Uploading Resources
+- Printing/Task processing
+
+WAYS TO IMPLEMENT
+- Array Implementation (easiest) - push/shift(v!) || unshift/pop -> enqueue/dequeue
+- Linked List Implementation
+- Writing from scratch
+
+BIG O
+- Smae as above
