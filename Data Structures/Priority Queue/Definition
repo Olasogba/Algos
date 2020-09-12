@@ -1,0 +1,3 @@
+What is a Priority Queue?
+- A data structure where each element has a priority. Elements with higher 
+  priorities are served before elemenets with lower priorities

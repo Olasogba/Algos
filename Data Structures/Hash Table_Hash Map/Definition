@@ -1,0 +1,33 @@
+What is a Hash Map?
+- Hash tables are used to store key-value pairs
+- They are like arrays, but the keys are not ordered
+- Unlike arrays, hash maps are fast for all of the following operations:
+  finding values, adding new values, and removing values.
+
+EXAMPLES:
+Python, C#: Dictionaries
+JS: Objects and Maps
+Java, Go, Scala: Maps
+Ruby: Hashes
+
+THE HASH PART
+- To implement a hash table, we'll be using an array.
+- In order to look up values by key, we need a way to convert keys into 
+  valid array indices
+- A function that performs this task is called a hash function.
+
+WHAT MAKES A GOOD HASH?
+- Fast (i.e constant time)
+- Doesn't cluster outputs at specific indices, but distributes uniformly
+- Deterministic (same input yields the same output everytime)
+
+HANDLING COLLISIONS
+- Even with a large array and a great has function, collisions are inevitable
+- There are many strategies for dealing with collisions, but we'll focus on
+  two:
+  - Seperate Chaining: Store the pieces of data at the same spot using another
+    nested data structure (e.g an array or a linked list). This allows us to 
+    store multiple key-value pairs at the same index.
+
+  - Linear Probing: We only store one piece of data at each position. When we
+    find a collision, we search through the array to find the next empty slot.

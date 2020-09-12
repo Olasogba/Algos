@@ -1,0 +1,32 @@
+What is a Tree?
+- A data structure that consists of nodes in a parent/child relationship
+
+TERMINOLOGY:
+Root: The top node in a Tree
+Child:A node directly connected to another node when moving awat from the Root
+Parent: The converse notion of a child
+Siblings: A group of nodes with the same parent
+Leaf: a node with no children
+Edge: The connection between one node and another
+
+USES
+- HTML DOM
+- Network Routing
+- Abstract Syntax Trees
+- Artificial Intelligence
+- Folders in Operating Systems
+- Json, etc
+
+
+KINDS OF TREES
+- Trees: Each node can have any number of child nodes
+- Binary Trees: Each node can have at most two children
+- Binary Search Trees: Are sorted binary trees. They are kept in an order.
+  For every node including the root, every child node larger than itself is
+  put on the right side of the node, and every smaller child node is put on
+  the left.
+
+
+BIG O (BST)
+Insertion - O(log n)
+Searching - O(log n)

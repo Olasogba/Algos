@@ -1,0 +1,37 @@
+What is a Graph?
+- A graph is a collection of nodes and connections between those nodes
+
+USES FOR GRAPHS
+- Social Networks
+- Location / Mapping
+- Routing Alogrithms
+- Visual Hierachy
+- File System Optimizations
+
+Graph terms:
+- Vertex: a node
+- Edge: connection between nodes
+- Weighted/Unweighted: values assigned to distances
+- Directed/Undirected: directions assigned to distance between vertices
+
+TWO WAYS OF STORING GRAPHS:
+- The adjacency matrix:
+    - Can take up less space (in sparse graphs)
+    - Faster to iterate over all edges
+    - Can be slower to look up specific edges
+- The adjecency list
+    - Takes up more space (in sparse graphs)
+    - Slower to iterate over all edges
+    - Faster to look up specific edge
+
+GRAPH TRAVERSAL USES
+- Peer to peer networking
+- Web crawlers
+- Finding "closest" matches/recommendations
+- Shortest path problems
+    - GPS Navigations
+    - Solving mazes
+    - AI (shortest path to win the game)
+
+GRAPH - DFS
+- Follow neighours before, reach a dead end, then backtrack
