@@ -130,27 +130,17 @@ class DoublyLinkedList:
         return True
 
     def reverse(self):
-        # reverses the list
-        # swap the head and tail
-        # create acurrent variable and set it to the head
-        # create a prev and next variable
-        # get the current next and save it to the next variable
-        # the actual next should become the previous
-        # the previous should be the current
-        # the current is then the saved next
-        node = self.head
-        self.head = self.tail
-        self.tail = node
-
+        current = self.head
         prev = None
-        d_next = None
 
-        for i in range(self.size):
-            d_next = node.next
-            node.next = prev
-            prev = node
-            node = d_next
+        while current is not None:
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
         
+        if temp is not None:
+            self.head = temp.prev
         return self
 
 
@@ -164,5 +154,4 @@ dll.push('Olasogba')
 dll.print()
 print()
 dll.reverse()
-dll.print()
 

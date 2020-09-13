@@ -1,3 +1,8 @@
 What is a Priority Queue?
 - A data structure where each element has a priority. Elements with higher 
   priorities are served before elemenets with lower priorities
+
+Priority Queues may be implemented in different ways, each with different effeciency
+- Linked list implementation: Elements are sorted in the linked list based on their priority
+- Array implementation -> push/shift but the Array.sort() fn is used to sort the list after any insertion
+- Binary heap implementation -> A min binary heap
