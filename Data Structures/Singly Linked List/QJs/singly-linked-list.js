@@ -119,7 +119,7 @@ class SinglyLinkedList {
     }
 
     remove(index) {
-        if(index < 0 || index > this.length) return false;
+        if(index < 0 || index >= this.length) return false;
         if(index === this.length-1) return !!this.pop(val);
         if(index === 0) return !!this.shift(val);
 
@@ -134,18 +134,19 @@ class SinglyLinkedList {
 
     reverse() {
         // swap the head and tail
-        // loop, starting with the head
-        // save the next node into a variable
-        // make the actual next become the previous
-        // make the previous the current
-        // make the current the next node that had been saved
+        // set a prev and next variable
+        // loop over the size
+        // save the actual next
+        // the actual next would become the previous
+        // the previous would become the next
+        // the next would become the current
 
         let node = this.head
         this.head = this.tail
         this.tail = node
-
-        let next;
+        
         let prev = null
+        let next;
 
         for(let i=0; i<this.length; i++) {
             next = node.next
