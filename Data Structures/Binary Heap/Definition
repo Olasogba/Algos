@@ -17,7 +17,7 @@ USES
 - They are also used quite a bit, with graph traversal algorithms
 
 STORING HEAPS
-THERE'S AN EASY WAY OF STORING A BINARY HEAP -> A LIST/ARRAY
+THERE'S AN EASY WAY OF CONSTRUCTING A BINARY HEAP -> with the use of A LIST/ARRAY
 1.
     - For any index of an array n...
     - The left child is stored at 2n+1

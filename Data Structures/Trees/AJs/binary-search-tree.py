@@ -2,7 +2,6 @@
 import sys
 sys.path.append('C:/Users/User/Desktop/Algorithm Mastery/Data Structures/Stacks and Queues/AJs')
 import my_queue
-print(my_queue.Queue())
 
 class Node:
     def __init__(self, value):
@@ -85,29 +84,75 @@ class BinarySearchTree:
                 if current == None:
                     return None
 
-    #def bfs(self):
-        # traverses the tree, touching each node only once
-        # create a queue to store our elements to traverse (push + shift)
-        # create a results array to store traversed nodes
-        # put the first node in the queue
-        # start a loop that continue as long as there are nodes left in the queue to traverse
-        # pop the queue
-        # add the element to the results array
-        # if there is a left element, add it to the queue
-        # same for the right
-        # return the results after the loop
-        #queue = 
-        #return None
+    def bfs(self):
+        # if there is no root, return None
+        # create a queue and a results variable
+        # enqueue the root
+        # start a loop for as long as anything is in the queue
+        # dequeue the queue and store the item in the list
+        # if the item has a right property, enqueue it
+        # if the item has a left property, enqueue it
+        if self.root is None: return None
+        queue = []
+        results = []
+        root = self.root
+        queue.insert(len(queue), root)
+        while len(queue) > 0:
+            node = queue.pop(0)
+            results.insert(len(results), node.value)
+            if node.left:
+                queue.insert(len(queue), node.left)
+            if node.right:
+                queue.insert(len(queue), node.right)
+        return results 
 
+    def dfsPreOrder(self):
+        # searches down the depth of a node. left, then right
+        if self.root is None: return None
+        results = []
+        def search(node: Node):
+            results.insert(len(results), node.value)
+            if(node.left): search(node.left)
+            if(node.right): search(node.right)
+
+        search(self.root)
+        return results
+
+    def dfsPostOrder(self):
+        # searches down the depth of a node. left, then right
+        if self.root is None: return None
+        results = []
+        def search(node: Node):
+            if(node.left): search(node.left)
+            if(node.right): search(node.right)
+            results.insert(len(results), node.value)
+
+        search(self.root)
+        return results
+    
+    def dfsInOrder(self):
+        # searches down the depth of a node. left, then right
+        if self.root is None: return None
+        results = []
+        def search(node: Node):
+            if(node.left): search(node.left)
+            results.insert(len(results), node.value)
+            if(node.right): search(node.right)
+
+        search(self.root)
+        return results
                     
 
 
 
 bst = BinarySearchTree()
-(bst.insertIterative(10))
-(bst.insertRecursive(6))
+bst.insertIterative(10)
+bst.insertRecursive(6)
 bst.insertRecursive(15)
 bst.insertRecursive(3)
 bst.insertRecursive(20)
-(bst.insertRecursive(8))
-print(bst.find(100))
+bst.insertRecursive(8)
+print(bst.bfs())
+print(bst.dfsPreOrder())
+print(bst.dfsPostOrder())
+print(bst.dfsInOrder())

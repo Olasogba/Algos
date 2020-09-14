@@ -9,9 +9,18 @@ class MaxBinaryHeap {
         // You add to the end of the values array, and bubble up by swapping
         this.values.push(value)
         let index = this.values.length - 1
+        let v = this.values[index]
 
         const bubble = () => {
             let parentIndex = Math.floor((index-1)/2)
+            let val = this.values[index]
+            let parentVal = this.values[parentIndex]
+            if (v == 100) {
+                console.log(index, parentIndex)
+                console.log(val, parentVal, this.values)
+                console.log()
+            }
+
             if(this.values[parentIndex] < this.values[index]) {
                 [this.values[parentIndex], this.values[index]] = [this.values[index], this.values[parentIndex]]
                 index = parentIndex
@@ -65,13 +74,12 @@ class MaxBinaryHeap {
 }
 
 let heap = new MaxBinaryHeap();
-heap.insert(41);
+heap.insert(12);
 heap.insert(39);
 heap.insert(33);
 heap.insert(18);
 heap.insert(27);
-heap.insert(12);
-//log(heap)
-log(heap.insert(55)) 
-log(heap.extractMax())
+heap.insert(41);
+heap.insert(100);
+//log(heap.extractMax())
 log(heap)

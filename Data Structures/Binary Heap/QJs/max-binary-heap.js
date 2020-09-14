@@ -67,14 +67,13 @@ class MaxBinaryHeap {
 }
 
 let heap = new MaxBinaryHeap();
-heap.insert(41);
+heap.insert(12);
 heap.insert(39);
 heap.insert(33);
 heap.insert(18);
 heap.insert(27);
-heap.insert(12);
-//log(heap)
-log(heap.insert(55)) 
+heap.insert(41);
+heap.insert(100);
 log(heap.extractMax())
-log(heap)
+log(heap.values)
 

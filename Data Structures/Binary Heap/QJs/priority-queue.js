@@ -68,12 +68,19 @@ class Node {
     }
 }
 
-let ER = new PriorityQueue();
-ER.enqueue("common cold",5)
-ER.enqueue("gunshot wound", 1)
-ER.enqueue("high fever",4)
-ER.enqueue("broken arm",2)
-ER.enqueue("glass in foot",3)
+let heap = new PriorityQueue();
+heap.enqueue(1,100);
+heap.enqueue(2,12);
+heap.enqueue(3,39);
+heap.enqueue(4,33);
+heap.enqueue(5,18);
+heap.enqueue(6,27);
+heap.enqueue(7,41);
+heap.enqueue(8,42);
+console.log(heap.values.map(c => c.priority))
+console.log()
+console.log(heap.dequeue().priority)
+console.log(heap.values.map(c => c.priority))
 
 
 

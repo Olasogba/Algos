@@ -135,6 +135,39 @@ class DoublyLinkedList {
         this.length--
         return removedNode
     }
+
+    reverse() {
+        // start from the head
+        // loop as long as there is something to loop over
+        // store the previous in a variable
+        // make the previous the next,
+        // make the next stored previous
+        // make the current the previous
+        // if there is a temp, make it's previous the new head
+
+        let current = this.head
+        let temp = null
+
+        while(current) {
+            temp = current.prev
+            current.prev = current.next
+            current.next = temp
+            current = current.prev
+        }
+
+        if(temp)
+            this.head = temp.prev
+        
+        return this
+    }
+
+    print() {
+        let current = this.head
+        while(current) {
+            console.log(current.val)
+            current = current.next
+        }
+    }
 }
 
 
@@ -143,6 +176,9 @@ list.push("Harry")
 list.push("Ron")
 list.push("Hermione")
 
-console.log('hello!')
-list.unshift("Michael")
-console.log(list)
+list.print()
+
+console.log()
+
+list.reverse()
+list.print()

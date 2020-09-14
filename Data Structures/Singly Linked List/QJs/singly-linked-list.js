@@ -134,30 +134,29 @@ class SinglyLinkedList {
 
     reverse() {
         // swap the head and tail
-        // set a prev and next variable
-        // loop over the size
-        // save the actual next
-        // the actual next would become the previous
-        // the previous would become the next
-        // the next would become the current
-
-        let node = this.head
+        // set the head as the current
+        // loop over the lenght
+        // store the next in a variable
+        // make the next the previous
+        // make the previous the current
+        // make the current the stored next
+        let current = this.head
         this.head = this.tail
-        this.tail = node
-        
-        let prev = null
-        let next;
+        this.tail = current
 
-        for(let i=0; i<this.length; i++) {
-            next = node.next
-            node.next = prev
-            prev = node
-            node = next
+        let next
+        let prev = null
+
+        for (let i=0; i<this.length; i++) {
+            next = current.next
+            current.next = prev
+            prev = current
+            current = next
         }
 
         return this
     }
-
+    
     print(){
         var arr = [];
         var current = this.head
