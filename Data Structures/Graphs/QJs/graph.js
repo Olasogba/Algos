@@ -104,5 +104,4 @@ g.addEdge('D', 'F')
 g.addEdge('E', 'F')
 
 log(g.dfsRecursive('A'))
-log(g.dfsIterative('A'))
-log(g.dfs('A'))
+//log(g.dfsIterative('A'))

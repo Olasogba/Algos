@@ -22,7 +22,7 @@ WHAT MAKES A GOOD HASH?
 - Deterministic (same input yields the same output everytime)
 
 HANDLING COLLISIONS
-- Even with a large array and a great has function, collisions are inevitable
+- Even with a large array and a great hash function, collisions are inevitable
 - There are many strategies for dealing with collisions, but we'll focus on
   two:
   - Seperate Chaining: Store the pieces of data at the same spot using another

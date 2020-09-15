@@ -24,10 +24,6 @@ class PriorityQueue:
             index = parent_index
 
     def extract_min(self):
-        # save min to return
-        # pop end and set it at index 0
-        # sink it down
-        # return min
         minm = self.values[0]
         end = self.values.pop()
         self.values[0] = end
@@ -75,8 +71,8 @@ heap.insert(5,18);
 heap.insert(6,27);
 heap.insert(7,41);
 heap.insert(8,42);
-heap.print()
-print()
-print(heap.extract_min().priority)
-heap.print()
+# heap.print()
+# print()
+# print(heap.extract_min().priority)
+# heap.print()
         
