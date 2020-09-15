@@ -12,26 +12,24 @@
 
 const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]]
 
-function sort(array) {
-    let minValueIndex = 1;
-    for(let i=0; i<array.length; i++) {
-        for(let j=i+1; j<array.length; j++) {
-            let min = array[minValueIndex]
-            let current = array[j]
-
-            if(current < min) minValueIndex = j
-            
-            
-            if(j == (array.length - 1)) {
-                if(array[minValueIndex] < array[i]){
-                    swap(array, i, minValueIndex)
-                } 
-            } 
+// ES2015 VERSION
+function sort(arr) {
+    const swap = (arr, idx1, idx2) =>
+      ([arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]]);
+  
+    for (let i = 0; i < arr.length; i++) {
+      let lowest = i;
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[lowest] > arr[j]) {
+          lowest = j;
         }
+      }
+      if (i !== lowest) swap(arr, i, lowest);
     }
-
-    return array
+  
+    return arr;
 }
+  
 
 
 log = (val) => console.log(val)

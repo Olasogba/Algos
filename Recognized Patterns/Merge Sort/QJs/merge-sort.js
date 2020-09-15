@@ -47,5 +47,5 @@ function mergeSort(arr) {
 
 log = (val) => console.log(val)
 
-
+log(merge([1,2,3],[3,6,7]))
 log(mergeSort([1,4,3,5,32,6,7,6,8,7,66,5,4,3,4,6]))

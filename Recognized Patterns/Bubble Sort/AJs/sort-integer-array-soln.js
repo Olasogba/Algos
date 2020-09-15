@@ -13,8 +13,7 @@ function sort(array) {
     let noSwaps;
     for(let i=array.length-1; i>0; i--) {
         noSwaps = true
-        for(let j=0; j<=i-1; j++) {
-            console.log(array, array[j], array[j+1])
+        for(let j=0; j<i; j++) {
             if(array[j] > array[j+1])
             {
                 swap(array, j, j+1)
@@ -23,7 +22,6 @@ function sort(array) {
             }  
         }
         if(noSwaps) break
-        log('ONE PASS COMPLETE!')
     }
     return array
 }
@@ -31,4 +29,4 @@ function sort(array) {
 const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]]
 
 log(sort([1,2,3,5,4,6]))
-//log(sort([101,2,3,5,4,3,5,100,3,2,33,23,1,2,5,66,4,5,4,3,6,7,8,76,5,99,8,6,0]))
+log(sort([101,2,3,5,4,3,5,100,3,2,33,23,1,2,5,66,4,5,4,3,6,7,8,76,5,99,8,6,0]))

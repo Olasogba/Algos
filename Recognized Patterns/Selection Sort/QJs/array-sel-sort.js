@@ -13,21 +13,13 @@
 const swap = (arr, i, j) => [arr[i], arr[j]] = [arr[j], arr[i]]
 
 function sort(array) {
-    let minValueIndex = 1;
-    for(let i=0; i<array.length; i++) {
+    for(let i=0; i<array.length; i++){
+        let lowest = i
         for(let j=i+1; j<array.length; j++) {
-            let min = array[minValueIndex]
-            let current = array[j]
-
-            if(current < min) minValueIndex = j
-            
-            
-            if(j == (array.length - 1)) {
-                if(array[minValueIndex] < array[i]){
-                    swap(array, i, minValueIndex)
-                } 
-            } 
+            if(array[j]<array[lowest])
+                lowest = j
         }
+        if(lowest != i) swap(array, i, lowest)
     }
 
     return array
