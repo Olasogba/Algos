@@ -44,16 +44,19 @@ function mostDigits(nums) {
 */
 function radixSort(nums) {
     let maxDigitCount = mostDigits(nums);
-    for(let k = 0; k < maxDigitCount; k++){
-        let digitBuckets = Array.from({length: 10}, () => []);
-        for(let i = 0; i < nums.length; i++){
-            let digit = getDigit(nums[i],k);
+    for(let k = 0; k < maxDigitCount; k++){ // for each iteration of the breadth of the largest number
+        let digitBuckets = Array.from({length: 10}, () => []); // create n buckets where n is base
+        for(let i = 0; i < nums.length; i++){ // for each value to be sorted
+            let digit = getDigit(nums[i],k); // get the base of it's right most digit and store the value in the associated bucket
             digitBuckets[digit].push(nums[i]);
+            log(digitBuckets)
         }
-        nums = [].concat(...digitBuckets);
+        nums = [].concat(...digitBuckets); // collate the results at the end of each iteration of the max value breadth
+        log(nums)
     }
     return nums;
 }
 
+log(digitCount(1234567890))
 log(radixSort([2313231,2255,3334,4]));
-log(radixSort([23,345,5467,12,2345,9852]))
+//log(radixSort([23,345,5467,12,2345,9852]))
