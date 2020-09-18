@@ -7,3 +7,8 @@ https://github.com/trekhleb/javascript-algorithms
 https://github.com/mgechev/javascript-algorithms
 
 https://github.com/romanovma/google-codejam
+
+
+INTERVIEW PREPARATION (Go through this list at least 3 times)
+LeetCode: https://leetcode.com/explore/interview/card/top-interview-questions-medium/103/array-and-strings/776/
+Hackerrank: https://www.hackerrank.com/interview/interview-preparation-kit

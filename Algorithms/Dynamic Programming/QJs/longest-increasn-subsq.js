@@ -1,4 +1,3 @@
-log = (val) => console.log(val)
 /**
  * Given an array of n elements, find the longest increasing subsequence
  * This is a maximum-length sequence of array elements that goes from 
@@ -16,6 +15,7 @@ log = (val) => console.log(val)
  * if(arr.length == 1) return 1
  * f(arr.length == 0) return 0
  */
+log = (val) => console.log(val)
 function solve(array) {
     
 }
