@@ -5,6 +5,7 @@ class Node:
         self.next = None
     
     def __repr__(self):
+        return self.__str__()
         return "Node()"
 
     def __str__(self):
@@ -15,6 +16,18 @@ class Stack:
         self.first = None
         self.last = None
         self.size = 0
+
+    def get(self, index: int):
+        if index > (self.size-1): return -1
+        count = 0
+        current = self.first
+        while count<index:
+            current = current.next
+            count+=1
+        return current.value
+
+    def __str__(self):
+       return str(self.__class__) + ": " + str(self.__dict__)
     
     def push(self, value): # adds to the beginning
         node = Node(value)
@@ -50,11 +63,4 @@ stack.push('2')
 stack.push('3')
 stack.push('4')
 stack.push('5')
-stack.print()
-print()
-stack.pop()
-stack.print()
-print()
-stack.pop()
-stack.print()
         

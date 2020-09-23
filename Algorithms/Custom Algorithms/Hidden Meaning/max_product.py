@@ -1,3 +1,4 @@
+import math
 '''
 Given an integer array, find three numbers whose product is maximum and output
 the maximum product
@@ -52,4 +53,30 @@ def more_optimal(array: list):
 
     return max(res1, res2)
 
+def most_optimal(array):
+    max1 = 0
+    max2 = 0
+    max3 = 0
+    min1 = 0
+    min2 = 0
+    for i, e in enumerate(array):
+        if e > max1:
+            max3 = max2
+            max2 = max1
+            max1 = e
+        if e < min1:
+            min2 = min1
+            min1 = e
+    
+    print(max1,max2,max3,min1,min2)
+    res1 = max1*max2*max3
+    res2 = min1*min2*max1
+
+    return max(res1, res2)
+
 print(more_optimal([-11,-22,3,4,5,6,7]))
+print(most_optimal([-11,-22,3,4,5,6,7]))
+print()
+
+print(more_optimal([-11,-22,3,4,5,6,7,9,11]))
+print(most_optimal([-11,-22,3,4,5,6,7,9,11]))
