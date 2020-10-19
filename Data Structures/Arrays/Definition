@@ -14,7 +14,7 @@ When and where is a static Array used?
 DYNAMIC ARRAY
 - The dynamic array can grow and shrink in size.
 
-How to implement a dynamic Arrau:
+How to implement a dynamic Array:
 - Create a static array with an initial capacity
 - Add elements to the underlying static array, keeping track of the number
   of elements

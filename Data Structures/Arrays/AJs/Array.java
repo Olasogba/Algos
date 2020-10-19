@@ -7,6 +7,7 @@ public class Array<T> implements Iterable<T> {
     private int len = 0; // length user thinks array is
     private int capacity = 0; // actual array size
 
+    // using two constructors to make for an optional size.
     public Array() {
         this(16);
     }
