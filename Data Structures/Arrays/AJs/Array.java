@@ -16,7 +16,7 @@ public class Array<T> implements Iterable<T> {
         if (capacity < 0)
             throw new IllegalArgumentException("Illegal Capacity: " + capacity);
         this.capacity = capacity;
-        arr = (T[]) new Object[capacity];
+        arr = (T[]) new Object[capacity]; 
     }
 
     public int size() {

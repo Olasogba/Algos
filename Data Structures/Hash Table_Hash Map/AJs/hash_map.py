@@ -58,7 +58,7 @@ class HashMap:
 hm = HashMap()
 hm.insert(1,2)
 hm.insert(2,3)
-hm.insert(3,2)
+hm.insert(45, "shola")
 print(hm.get(1))
 print(hm)
 print(hm.keys())

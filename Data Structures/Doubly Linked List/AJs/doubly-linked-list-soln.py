@@ -57,7 +57,7 @@ class DoublyLinkedList:
         self.size -= 1
         return old_tail
 
-    def get(self, index) -> Node:
+    def get(self, index):
         counter = 0
         current = self.head
         while current:
@@ -65,7 +65,7 @@ class DoublyLinkedList:
                 return current
             counter+=1
             current = current.next
-        return None
+        return None;
 
     def shift(self):
         if self.size == 0: return None
