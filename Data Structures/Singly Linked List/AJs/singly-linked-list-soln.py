@@ -1,7 +1,7 @@
 class Node:
     def __init__(self, value):
         self.info = value
-        self.link = None
+        self.next = None
     
     def __repr__(self):
         return "Node()"
@@ -19,7 +19,7 @@ class SinglyLinkedList:
         current = self.start
         while current is not None:
             print(current.info)
-            current = current.link
+            current = current.next
         self.count_nodes()
     
     def __str__(self):
@@ -34,7 +34,7 @@ class SinglyLinkedList:
             self.start = node
             self.end = node
         else:
-            self.end.link = node
+            self.end.next = node
             self.end = node
         self.size+=1
         return self
@@ -55,10 +55,10 @@ class SinglyLinkedList:
         else:
             current = self.start
             prev=None
-            while current.link:
+            while current.next:
                 prev = current
-                current = current.link # this is the last
-            prev.link = None
+                current = current.next # this is the last
+            prev.next = None
             self.end = prev
             self.size-=1
             return current.info
@@ -74,7 +74,7 @@ class SinglyLinkedList:
             if count == index:
                 return current
             count+=1
-            current = current.link
+            current = current.next
         return None
     
     def setValue(self, key, value):
@@ -92,7 +92,7 @@ class SinglyLinkedList:
             self.start = None
             self.end = None
         else:
-            self.start = self.start.link
+            self.start = self.start.next
         
         self.size -= 1
         return oldHead.info
@@ -103,7 +103,7 @@ class SinglyLinkedList:
             self.start = node
             self.end = node
         else:
-            node.link = self.start
+            node.next = self.start
             self.start = node
         self.size+=1
         return self
@@ -120,10 +120,10 @@ class SinglyLinkedList:
         node = Node(value)
 
         prevNode = self.get(index-1)
-        currNext = prevNode.link
+        currNext = prevNode.next
         if prevNode is not None:
-            node.link = currNext
-            prevNode.link = node
+            node.next = currNext
+            prevNode.next = node
 
         self.size+=1
         return True
@@ -136,29 +136,27 @@ class SinglyLinkedList:
         if index == self.size-1: return (self.pop() is not None)
 
         previous = self.get(index-1)
-        removed = previous.link
-        newNext = removed.link
-        previous.link = newNext
+        removed = previous.next
+        newNext = removed.next
+        previous.next = newNext
 
         self.size -= 1
         return removed
 
     def reverse(self):
-        #swap the head and tail
-        node = self.start
+        #  swap the head and tail
+        current = self.start
         self.start = self.end
-        self.end = node
+        self.end = current
 
-        d_next = None
+        _next = None
         prev = None
-        for i in range(self.size):
-            #make actual next the previous
-            d_next = node.link
-            node.link = prev
-            #prev becomes the current
-            prev = node
-            #current becomes next
-            node = d_next
+
+        while(current != None):
+            _next = current.next
+            current.next = prev
+            prev = current
+            current = _next
         
         return self
 

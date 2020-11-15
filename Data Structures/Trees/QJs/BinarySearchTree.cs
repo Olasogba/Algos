@@ -1,11 +1,14 @@
 /**
-    Methods:
+ Methods:
  * - insertRecursive
  * - insertIterative
- * - find
+ * - FindWithParent
+ * - Remove
  * - contains
- * - bfs
+ * - bfs ?
  * - dfsPreOrder
  * - dfsPostOrder
  * - dfsInOrder
 */
+
+internal class MikesBinaryTreeNode<T> : IComparable

@@ -26,7 +26,34 @@ KINDS OF TREES
   put on the right side of the node, and every smaller child node is put on
   the left.
 
+REMOVING A NODE FROM A BINARY TREE
+- CASE 1: Node is a leaf node (has no children)
+  * Find the node
+  * Unlink it from it's parent
+
+- CASE 2: Node has one child.
+  * Find the node
+  * Unlink it from its parent
+  * Promote the child
+
+- CASE 3: Node has two children.
+  * Find the node
+  * Go to its right child
+  * Go to its leftmost child
+  * replace deleted node with successor
+  * promote the successor's child
+
+- Algorithm
+  * three cases:
+  * handle leaf node and node with left child only: leaf node and leftchild only
+  * handle leaf node with right child that has no left: right child with no left
+  * handle leaf node with right child that has a left: right child with left
+  
+
 
 BIG O (BST)
 Insertion - O(log n)
 Searching - O(log n)
+O(log n), best, average case because if you double the number of nodes, the node of steps required
+to insert or find only increases by 1
+Worst case: One sided BSTs (O(n))

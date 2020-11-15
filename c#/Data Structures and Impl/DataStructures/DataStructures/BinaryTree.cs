@@ -164,6 +164,7 @@ namespace DataStructures
             Count--;
 
             // Case 1: If current has no right child, then current's left replaces current
+            // leaf node, node with left child
             if (current.Right == null)
             {
                 if (parent == null)
@@ -188,7 +189,8 @@ namespace DataStructures
                 }
             }
             // Case 2: If current's right child has no left child, then current's right child
-            //         replaces current
+            //         replaces current.            
+            //          ->node with right child
             else if (current.Right.Left == null)
             {
                 current.Right.Left = current.Left;
@@ -229,9 +231,11 @@ namespace DataStructures
                 }
 
                 // the parent's left subtree becomes the leftmost's right subtree
+                // replacing the successor with its right
                 leftmostParent.Left = leftmost.Right;
 
                 // assign leftmost's left and right to current's left and right children
+                // replacing current with leftmost
                 leftmost.Left = current.Left;
                 leftmost.Right = current.Right;
 

@@ -113,6 +113,7 @@ class DoublyLinkedList:
         node.prev = prev
         node.next = old_next
         prev.next = node
+        old_next.prev = node
 
         self.size+=1
         return True
@@ -130,18 +131,18 @@ class DoublyLinkedList:
         return True
 
     def reverse(self):
+        if(self.size<=1):return True
         current = self.head
-        prev = None
+        temp = None
 
+        # swap next and prev for all nodes
         while current is not None:
             temp = current.prev
             current.prev = current.next
             current.next = temp
             current = current.prev
         
-        if temp is not None:
-            self.head = temp.prev
-        return self
+        self.head = temp.prev
 
 
     
@@ -153,5 +154,7 @@ dll.push('Akin')
 dll.push('Olasogba')
 dll.print()
 print()
-dll.reverse()
+dll.insert(2, 'John')
+dll.print()
+print(dll.get(3).prev)
 

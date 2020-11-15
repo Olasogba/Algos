@@ -1,373 +1,262 @@
-internal class BinaryTreeNode<TNode> : IComparable<TNode>
-        where TNode : IComparable<TNode>
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace DataStructures.Mike
+{
+    public class MikesBinaryTreeNode<T> : IComparable<T> where T : IComparable<T>
     {
-        public BinaryTreeNode(TNode value)
+        public T Value { get; set; }
+        public MikesBinaryTreeNode<T> Left { get; set; }
+        public MikesBinaryTreeNode<T> Right { get; set; }
+        public MikesBinaryTreeNode(T value)
         {
             Value = value;
         }
-
-        public BinaryTreeNode<TNode> Left { get; set; }
-        public BinaryTreeNode<TNode> Right { get; set; }
-        public TNode Value { get; private set; }
-
-        /// <summary>
-        /// Compares the current node to the provided value
-        /// </summary>
-        /// <param name="other">The node value to compare to</param>
-        /// <returns>1 if the instance value is greater than the provided value, -1 if less or 0 if equal.</returns>
-        public int CompareTo(TNode other)
+        public int CompareTo(T other)
         {
             return Value.CompareTo(other);
         }
     }
 
-    public class BinaryTree<T> : IEnumerable<T>
-        where T: IComparable<T>
+    public class MikesBinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
     {
-        private BinaryTreeNode<T> Root { get; set; }
-
-        #region Add
-
-        /// <summary>
-        /// Adds the provided value to the binary tree.
-        /// </summary>
-        /// <param name="value"></param>
-        public void Add(T value)
+        private MikesBinaryTreeNode<T> Root { get; set; }
+        /**
+         Methods:
+         * - insertRecursive
+         * - insertIterative
+         * - Find
+         * - FindWithParent
+         * - Remove
+         * - contains
+         * - bfs ?
+         * - dfsPreOrder
+         * - dfsPostOrder
+         * - dfsInOrder
+        */
+        public void InsertRecursive(T value)
         {
-            // Case 1: The tree is empty - allocate the head
+            if(Root==null)
+            {
+                Root = new MikesBinaryTreeNode<T>(value);
+                return;
+            }
+            InsertRecursive(Root, value);
+        }
+
+        private void InsertRecursive(MikesBinaryTreeNode<T> node, T value)
+        {
+            var newNode = new MikesBinaryTreeNode<T>(value);
+            if(node.CompareTo(value) > 0) // node is bigger
+            {
+                if (node.Left == null) node.Left = newNode;
+                else InsertRecursive(node.Left, value);
+            } else
+            {
+                if (node.Right == null) node.Right = newNode;
+                else InsertRecursive(node.Right, value);
+            }
+        }
+
+        public void InsertIterative(T value)
+        {
             if (Root == null)
             {
-                Root = new BinaryTreeNode<T>(value);
+                Root = new MikesBinaryTreeNode<T>(value);
+                return;
             }
-            // Case 2: The tree is not empty so find the right location to insert
-            else
-            {
-                AddTo(Root, value);
-            }
-
-            Count++;
+            InsertIterative(Root, value);
         }
 
-        // Recursive add algorithm
-        private void AddTo(BinaryTreeNode<T> node, T value)
+        public MikesBinaryTreeNode<T> Find(T value)
         {
-            // Case 1: Value is less than the current node value
-            if (value.CompareTo(node.Value) < 0)
-            {
-                // if there is no left child make this the new left
-                if (node.Left == null)
-                {
-                    node.Left = new BinaryTreeNode<T>(value);
-                }
-                else
-                {
-                    // else add it to the left node
-                    AddTo(node.Left, value);
-                }
-            }
-            // Case 2: Value is equal to or greater than the current value
-            else
-            {
-                // If there is no right, add it to the right
-                if (node.Right == null)
-                {
-                    node.Right = new BinaryTreeNode<T>(value);
-                }
-                else
-                {
-                    // else add it to the right node
-                    AddTo(node.Right, value);
-                }
-            }
+            MikesBinaryTreeNode<T> parent;
+            var found = FindWithParent(value, out parent);
+            Console.WriteLine(parent);
+            return found;
         }
-        #endregion
 
-        /// <summary>
-        /// Determines if the specified value exists in the binary tree.
-        /// </summary>
-        /// <param name="value">The value to search for.</param>
-        /// <returns>True if the tree contains the value, false otherwise</returns>
         public bool Contains(T value)
         {
-            // defer to the node search helper function.
-            BinaryTreeNode<T> parent;
+            MikesBinaryTreeNode<T> parent;
             return FindWithParent(value, out parent) != null;
         }
 
-        /// <summary>
-        /// Finds and returns the first node containing the specified value.  If the value
-        /// is not found, returns null.  Also returns the parent of the found node (or null)
-        /// which is used in Remove.
-        /// </summary>
-        /// <param name="value">The value to search for</param>
-        /// <param name="parent">The parent of the found node (or null)</param>
-        /// <returns>The found node (or null)</returns>
-        private BinaryTreeNode<T> FindWithParent(T value, out BinaryTreeNode<T> parent)
+        private MikesBinaryTreeNode<T> FindWithParent(T value, out MikesBinaryTreeNode<T> parent)
         {
-            // Now, try to find data in the tree
-            BinaryTreeNode<T> current = Root;
             parent = null;
-
-                // while we don't have a match
-            while (current != null)
+            if (Root == null) return null;
+            var current = Root;
+            var found = false;
+            while(current!=null && !found)
             {
-                int result = current.CompareTo(value);
-
-                if (result > 0)
+                if(current.CompareTo(value)==0)
                 {
-                    // if the value is less than current, go left.
+                    found = true;
+                } else if(current.CompareTo(value) > 0)
+                {
                     parent = current;
                     current = current.Left;
-                }
-                else if (result < 0)
+                } else
                 {
-                    // if the value is more than current, go right.
                     parent = current;
                     current = current.Right;
                 }
-                else
-                {
-                    // we have a match!
-                    break;
-                }
             }
-
             return current;
         }
 
-        #region Remove
-        /// <summary>
-        /// Removes the first occurance of the specified value from the tree.
-        /// </summary>
-        /// <param name="value">The value to remove</param>
-        /// <returns>True if the value was removed, false otherwise</returns>
-        public bool Remove(T value)
+        private void InsertIterative(MikesBinaryTreeNode<T> node, T value)
         {
-            BinaryTreeNode<T> current, parent;
-
-            current = FindWithParent(value, out parent);
-
-            if (current == null)
+            var current = node;
+            var newNode = new MikesBinaryTreeNode<T>(value);
+            while(true)
             {
-                return false;
-            }
-
-            Count--;
-
-            // Case 1: If current has no right child, then current's left replaces current
-            if (current.Right == null)
-            {
-                if (parent == null)
+                if(current.CompareTo(value) > 0)
                 {
-                    Root = current.Left;
-                }
-                else
-                {
-                    int result = parent.CompareTo(current.Value);
-                    if (result > 0)
+                    if(current.Left==null)
                     {
-                        // if parent value is greater than current value
-                        // make the current left child a left child of parent
-                        parent.Left = current.Left;
-                    }
-                    else if (result < 0)
+                        current.Left = newNode;
+                        break;
+                    } else
                     {
-                        // if parent value is less than current value
-                        // make the current left child a right child of parent
-                        parent.Right = current.Left;
+                        current = current.Left;
                     }
-                }
-            }
-            // Case 2: If current's right child has no left child, then current's right child
-            //         replaces current
-            else if (current.Right.Left == null)
-            {
-                current.Right.Left = current.Left;
-
-                if (parent == null)
+                } else if (current.CompareTo(value) < 0)
                 {
-                    Root = current.Right;
-                }
-                else
-                {
-                    int result = parent.CompareTo(current.Value);
-                    if (result > 0)
+                    if(current.Right==null)
                     {
-                        // if parent value is greater than current value
-                        // make the current right child a left child of parent
-                        parent.Left = current.Right;
-                    }
-                    else if (result < 0)
+                        current.Right = newNode;
+                        break;
+                    } else
                     {
-                        // if parent value is less than current value
-                        // make the current right child a right child of parent
-                        parent.Right = current.Right;
+                        current = current.Right;
                     }
-                }
-            }
-            // Case 3: If current's right child has a left child, replace current with current's
-            //         right child's left-most child
-            else
-            {
-                // find the right's left-most child
-                BinaryTreeNode<T> leftmost = current.Right.Left;
-                BinaryTreeNode<T> leftmostParent = current.Right;
-                
-                while (leftmost.Left != null)
+                } else
                 {
-                    leftmostParent = leftmost;
-                    leftmost = leftmost.Left;
+                    break;
                 }
+            }
+        }
 
-                // the parent's left subtree becomes the leftmost's right subtree
-                leftmostParent.Left = leftmost.Right;
+        public void BreadthFirstSeach()
+        {
+            var store = new ArrayList();
+            var queue = new Queue<MikesBinaryTreeNode<T>>();
+            queue.Enqueue(Root);
 
-                // assign leftmost's left and right to current's left and right children
-                leftmost.Left = current.Left;
-                leftmost.Right = current.Right;
-
-                if (parent == null)
+            while(queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                store.Add(current);
+                if (current.Left != null)
                 {
-                    Root = leftmost;
+                    queue.Enqueue(current.Left);
                 }
-                else
+                if(current.Right!=null)
                 {
-                    int result = parent.CompareTo(current.Value);
-                    if (result > 0)
-                    {
-                        // if parent value is greater than current value
-                        // make leftmost the parent's left child
-                        parent.Left = leftmost;
-                    }
-                    else if (result < 0)
-                    {
-                        // if parent value is less than current value
-                        // make leftmost the parent's right child
-                        parent.Right = leftmost;
-                    }
+                    queue.Enqueue(current.Right);
                 }
             }
 
-            return true;
-        }
-        #endregion
-
-        #region Pre-Order Traversal
-        /// <summary>
-        /// Performs the provided action on each binary tree value in pre-order traversal order.
-        /// </summary>
-        /// <param name="action">The action to perform</param>
-        public void PreOrderTraversal(Action<T> action)
-        {
-            PreOrderTraversal(action, Root);
+            Console.WriteLine(store);
         }
 
-        private void PreOrderTraversal(Action<T> action, BinaryTreeNode<T> node)
+        public void DFSInOrder(Action<MikesBinaryTreeNode<T>> action)
         {
-            if (node != null)
+            //DFSInOrder(_ => Console.WriteLine(_.Value));
+            if (Root == null)
             {
-                action(node.Value);
-                PreOrderTraversal(action, node.Left);
-                PreOrderTraversal(action, node.Right);
-            }
-        }
-        #endregion
-
-        #region Post-Order Traversal
-        /// <summary>
-        /// Performs the provided action on each binary tree value in post-order traversal order.
-        /// </summary>
-        /// <param name="action">The action to perform</param>
-        public void PostOrderTraversal(Action<T> action)
-        {
-            PostOrderTraversal(action, Root);
-        }
-
-        private void PostOrderTraversal(Action<T> action, BinaryTreeNode<T> node)
-        {
-            if (node != null)
+                // do nothing
+            } else
             {
-                PostOrderTraversal(action, node.Left);
-                PostOrderTraversal(action, node.Right);
-                action(node.Value);
-            }
-        }
-        #endregion
-
-        #region In-Order Enumeration
-        /// <summary>
-        /// Performs the provided action on each binary tree value in in-order traversal order.
-        /// </summary>
-        /// <param name="action">The action to perform</param>
-        public void InOrderTraversal(Action<T> action)
-        {
-            InOrderTraversal(action, Root);
-        }
-
-        private void InOrderTraversal(Action<T> action, BinaryTreeNode<T> node)
-        {
-            if (node != null)
-            {
-                InOrderTraversal(action, node.Left);
-
-                action(node.Value);
-
-                InOrderTraversal(action, node.Right);
+                DFSInOrder(action, Root);
             }
         }
 
-        /// <summary>
-        /// Enumerates the values contains in the binary tree in in-order traversal order.
-        /// </summary>
-        /// <returns>The enumerator</returns>
+        private void DFSInOrder(Action<MikesBinaryTreeNode<T>> action, MikesBinaryTreeNode<T> node)
+        {
+            if (node.Left != null) DFSInOrder(action, node.Left);
+            action(node);
+            if (node.Right != null) DFSInOrder(action, node.Right);
+        }
+
+        public void DFSPreOrder(Action<MikesBinaryTreeNode<T>> action)
+        {
+            if(Root == null)
+            {
+                // do nothing
+            } else
+            {
+                DFSPreOrder(action, Root);
+            }
+        }
+
+        private void DFSPreOrder(Action<MikesBinaryTreeNode<T>> action, MikesBinaryTreeNode<T> node)
+        {
+            action(node);
+            if (node.Left != null) DFSPreOrder(action, node.Left);
+            if (node.Right != null) DFSPreOrder(action, node.Right);
+        }
+
+        public List<T> DFSPostOrder()
+        {
+            if(Root == null)
+            {
+                // do nothing
+                return null;
+            } else
+            {
+                var store = new List<MikesBinaryTreeNode<T>>();
+                return DFSPostOrder(store, Root);
+            }
+        }       
+
+        private List<T> DFSPostOrder(List<MikesBinaryTreeNode<T>> store, MikesBinaryTreeNode<T> nodeToTraverse)
+        {
+            if (nodeToTraverse.Left != null) DFSPostOrder(store, nodeToTraverse.Left);
+            if (nodeToTraverse.Right != null) DFSPostOrder(store, nodeToTraverse.Right);
+            store.Add(nodeToTraverse);
+            return store.Select(c => c.Value).ToList();
+        }
+
         public IEnumerator<T> InOrderTraversal()
         {
-            // This is a non-recursive algorithm using a stack to demonstrate removing
-            // recursion to make using the yield syntax easier.
-            if (Root != null)
+            //var store = DFSPostOrder();
+            //foreach(var x in store) yield return x;
+            if(Root != null)
             {
-                // store the nodes we've skipped in this stack (avoids recursion)
-                Stack<BinaryTreeNode<T>> stack = new Stack<BinaryTreeNode<T>>();
-
-                BinaryTreeNode<T> current = Root;
-
-                // when removing recursion we need to keep track of whether or not
-                // we should be going to the left node or the right nodes next.
-                bool goLeftNext = true;
-
-                // start by pushing Head onto the stack
-                stack.Push(current);
-
-                while (stack.Count > 0)
+                // go left and add to stack except last node
+                // yield current
+                // then go right once if right exsits
+                // else pop parent and go right
+                var stack = new Stack<MikesBinaryTreeNode<T>>();
+                var current = Root;
+                stack.Push(Root);
+                var goLeftNext = true;
+                
+                while(stack.Count > 0)
                 {
-                    // If we're heading left...
-                    if (goLeftNext)
+                    if(goLeftNext)
                     {
-                        // push everything but the left-most node to the stack
-                        // we'll yield the left-most after this block
-                        while (current.Left != null)
+                        while(current.Left != null)
                         {
                             stack.Push(current);
                             current = current.Left;
                         }
                     }
 
-                    // in-order is left->yield->right
                     yield return current.Value;
 
-                    // if we can go right then do so
-                    if (current.Right != null)
+                    if(current.Right != null)
                     {
                         current = current.Right;
-
-                        // once we've gone right once, we need to start
-                        // going left again.
-                        goLeftNext = true;
-                    }
-                    else
+                        goLeftNext = false;
+                    } else
                     {
-                        // if we can't go right then we need to pop off the parent node
-                        // so we can process it and then go to it's right node
                         current = stack.Pop();
                         goLeftNext = false;
                     }
@@ -375,36 +264,80 @@ internal class BinaryTreeNode<TNode> : IComparable<TNode>
             }
         }
 
-        /// <summary>
-        /// Returns an enumerator that performs an in-order traversal of the binary tree
-        /// </summary>
-        /// <returns>The in-order enumerator</returns>
+        public bool Remove(T value)
+        {
+            // three case:
+            // leaf node and left child only
+            // node with right child without left
+            // node with right child that has left
+
+            MikesBinaryTreeNode<T> nodeToRemove, parent;
+            nodeToRemove = FindWithParent(value, out parent);
+            if (nodeToRemove == null) return false;
+
+            if(nodeToRemove.Right == null)
+            {
+                if (parent == null) Root = nodeToRemove.Left;
+                else
+                {
+                    int result = parent.CompareTo(nodeToRemove.Value);
+                    if(result > 0)
+                    {
+                        parent.Left = nodeToRemove.Left;
+                    } else if(result<0)
+                    {
+                        parent.Right = nodeToRemove.Left;
+                    }
+                }
+            } else if(nodeToRemove.Right.Left==null)
+            {
+                if (parent == null) Root = nodeToRemove.Right;
+                else
+                {
+                    int result = parent.CompareTo(nodeToRemove.Value);
+                    if (result > 0) parent.Left = nodeToRemove.Right;
+                    else if (result < 0) parent.Right = nodeToRemove.Right;
+                }
+            } else
+            {
+                var leftMost = nodeToRemove.Right.Left;
+                var leftMostParent = nodeToRemove.Right;
+
+                while(leftMost.Left != null)
+                {
+                    leftMostParent = leftMost;
+                    leftMost = leftMost.Left;
+                }
+                // replacing successor with its child
+                leftMostParent.Left = leftMost.Right;
+
+                leftMost.Right = nodeToRemove.Right;
+                leftMost.Left = nodeToRemove.Left;
+
+                if (parent == null) Root = leftMost;
+                else
+                {
+                    int result = parent.CompareTo(nodeToRemove.Value);
+                    if(result>0)
+                    {
+                        parent.Left = leftMost;
+                    } else if(result<0)
+                    {
+                        parent.Right = leftMost;
+                    }
+                }
+            }
+
+            return true;
+        }
         public IEnumerator<T> GetEnumerator()
         {
-            return InOrderTraversal();
+            return InOrderTraversal(); 
         }
 
-        /// <summary>
-        /// Returns an enumerator that performs an in-order traversal of the binary tree
-        /// </summary>
-        /// <returns>The in-order enumerator</returns>
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
-        #endregion
-
-        /// <summary>
-        /// Removes all items from the tree
-        /// </summary>
-        public void Clear()
-        {
-            Root = null;
-            Count = 0;
-        }
-
-        /// <summary>
-        /// Returns the number of items currently contained in the tree
-        /// </summary>
-        public int Count { get; private set; }
     }
+}
