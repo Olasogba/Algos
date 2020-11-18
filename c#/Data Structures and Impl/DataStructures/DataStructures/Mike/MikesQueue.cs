@@ -5,21 +5,20 @@ using System.Text;
 
 namespace DataStructures.Mike
 {
-    public class MikesStack<T> : IEnumerable<T>
+    public class MikesQueue<T> : IEnumerable<T>
     {
         private readonly MikesDoublyLinkedList<T> store = new MikesDoublyLinkedList<T>();
         public int Count { get { return store.Count; } }
-
-        public T Pop()
+        public void Enqueue(T value)
         {
-            var value = store.Shift().Value;
-            if (value == null) throw new InvalidOperationException();
-            return value;
+            store.Push(value);
         }
 
-        public void Push(T value)
+        public T Dequeue()
         {
-            store.Unshift(value);
+            var node = store.Shift();
+            if (node == null) throw new InvalidOperationException();
+            return node.Value;
         }
         public IEnumerator<T> GetEnumerator()
         {

@@ -68,17 +68,18 @@ namespace DataStructures.Mike
             if (Count == 0) return null;
             if(Count==1)
             {
+                var toReturn = Head;
                 Head = null;
                 Tail = null;
                 Count--;
-                return Head;
+                return toReturn;
             } else
             {
                 var head = Head;
                 Head = head.Next;
                 Head.Prev = null;
                 Count--;
-                return Head;
+                return head;
             }
         }
 

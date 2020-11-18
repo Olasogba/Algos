@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataStructures.Mike;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -167,7 +168,7 @@ public class MikesBinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
     {
         if(Root!=null)
         {
-            var queue = new Queue<MikesBinarySearchTreeNode<T>>();
+            var queue = new MikesQueue<MikesBinarySearchTreeNode<T>>();
             var current = Root;
             queue.Enqueue(current);
             while(queue.Count > 0)
@@ -233,7 +234,7 @@ public class MikesBinarySearchTree<T> : IEnumerable<T> where T : IComparable<T>
 
     private IEnumerator<T> DFSPreOrder()
     {
-        var stack = new Stack<MikesBinarySearchTreeNode<T>>(); // lifo;
+        var stack = new MikesStack<MikesBinarySearchTreeNode<T>>(); // lifo;
         var goLeftNext = true;
 
         var current = Root;
