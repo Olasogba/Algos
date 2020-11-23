@@ -4,9 +4,9 @@ using System.Text;
 
 namespace DataStructures.Mike.HashMap
 {
-    internal class MikesHashNodePair<TKey, TValue>
+    internal class HashMapNodePair<TKey, TValue>
     {
-        public MikesHashNodePair(TKey key, TValue value)
+        public HashMapNodePair(TKey key, TValue value)
         {
             Key = key;
             Value = value;
