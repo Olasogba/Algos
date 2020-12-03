@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.acme.greeter;
+package com.acme.greeter_test;
 
+import com.acme.greeter.Greeter;
+import com.acme.greeter.Greeting;
 import com.fitbur.testify.Cut;
 import com.fitbur.testify.Fake;
 import com.fitbur.testify.junit.UnitTest;

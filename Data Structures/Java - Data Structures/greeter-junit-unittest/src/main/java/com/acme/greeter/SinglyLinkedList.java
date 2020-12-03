@@ -1,3 +1,5 @@
+package com.acme.greeter;
+
 import java.util.Iterator;
 
 
@@ -103,13 +105,12 @@ public class SinglyLinkedList<T> implements Iterable<T> {
                     // we wanna remove head
                     shift();
                 } else {
-                    prev.next = current.next;
+                    prev = current.next;
                     if(prev.next==null) tail = prev;
                     --size;
                 }
                 return true;
             }
-            prev = current;
             current = current.next;
         }
 
@@ -131,17 +132,15 @@ public class SinglyLinkedList<T> implements Iterable<T> {
     }
 
     public void reverse() {
-        // swap head and tail
-        // swap inner pointers
-        var current = this.head;
-        this.head = this.tail;
-        this.tail = current;
+        // swap the head and tail;
+        var current = head;
+        head = tail;
+        tail = current;
 
-        SinglyLinkedListNode prev = null;
-        SinglyLinkedListNode next = null;
+        SinglyLinkedListNode<T> prev = null;
+        SinglyLinkedListNode<T> next = null;
 
         while(current!=null) {
-            // swap next and prev and then update current.
             next = current.next;
             current.next = prev;
             prev = current;
@@ -213,18 +212,13 @@ public class SinglyLinkedList<T> implements Iterable<T> {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        var s = new SinglyLinkedList<String>();
-        s.push("Akin");
-        s.push("Ola");
-        s.push("Iyanu");
-        s.push("Ope");
-        s.unshift("oluwa");
-        System.out.println(s.toString());
-        s.remove("oluwa");
-        System.out.println(s.toString());
-        System.out.println(s.size());
-        s.reverse();
+    public static void Main(String[] args) {
+        var s = new SinglyLinkedList<Integer>();
+        s.push(1);
+        s.push(1);
+        s.push(1);
+        s.push(1);
+        s.push(1);
         System.out.println(s.toString());
     }
 

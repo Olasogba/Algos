@@ -251,6 +251,7 @@ namespace DataStructures.Mike
                 current = current.Prev;
             }
 
+            // taking the last node and setting it to head
             Head = temp.Prev;
             return true;
         }

@@ -28,10 +28,24 @@ THERE'S AN EASY WAY OF CONSTRUCTING A BINARY HEAP -> with the use of A LIST/ARRA
     - Its parent is at index Math.floor((n-1)/2)
 
 
-REMOVING FROM HEAPS
-- Remove the root
-- Replace the most recently added
+REMOVING FROM HEAPS -> Dequeue, Poll
+- shift out the root
+- Replace it with the new node in the arraylist
 - Adjust (sink down)
+
+REMOVING PROVIDED VALUES FROM HEAPS -> Remove(val)
+- Search and find the node
+- swap the node with the last item in arraylist
+- pop out the node
+- if we can bubble up the swapped item, we do that, else if we can sinkdown we sink down the item : else we do nothing
+
+ADDING TO HEAPS -> Enqueue, Insert
+- Push to the arraylist
+- bubble up
+
+SEARCHING HEAPS
+- BFS, DFS,
+- Hashtable storages and lookups
 
 PRIORITY QUEUES
 - A data structure where each elemenet has a priority. Elements with higher
