@@ -38,30 +38,7 @@
   */
 
   function ways(string) {
-    let countOfA = (string.match(/a/g) || []).length // no of a in the string
-
-    if(!countOfA) {
-      // no 'a's present
-      return (string.length - 2)*(string.length - 1) / 2
-    }
-
-    if(countOfA % 3 != 0) return 0 // non divisible
-
-
-    let map = new Map() // where to store the frequency occurence
-
-    let result = 0, partition = countOfA/3, frequency = 0
-    for(let char of string) {
-      frequency += char == 'a' ? 1 : 0
-
-      if(frequency == 2*partition) result += map.get(partition)
-
-      if(map.get(frequency)) map.set(frequency, frequency+1)
-      else
-      map.set(frequency, 1)
-    }
-
-    return result
+    
   }
 
   log = (val)=>console.log(val)

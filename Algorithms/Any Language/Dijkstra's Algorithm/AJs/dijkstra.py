@@ -1,6 +1,6 @@
 import sys
 import math
-sys.path.append('C:/Users/User/Desktop/Algorithm Mastery/Data Structures/Priority Queue/AJs')
+sys.path.append('C:/Users/User/Desktop/Algorithm Mastery/Data Structures/Python_JS - Data Structures/Priority Queue/AJs')
 
 import priority_queue
 
@@ -40,7 +40,6 @@ class WeightedGraph:
             smallest = queue.extract_min().val
             if smallest == finish:
                 # COLLATE RESULTS
-                print(previous, smallest)
                 while previous[smallest]:
                     path.insert(len(path), smallest)
                     smallest = previous[smallest]

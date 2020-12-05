@@ -62,15 +62,15 @@ class PriorityQueue:
 
 
 
-heap = PriorityQueue()
-heap.insert(1,100);
-heap.insert(2,12);
-heap.insert(3,39);
-heap.insert(4,33);
-heap.insert(5,18);
-heap.insert(6,27);
-heap.insert(7,41);
-heap.insert(8,42);
+# heap = PriorityQueue()
+# heap.insert(1,100);
+# heap.insert(2,12);
+# heap.insert(3,39);
+# heap.insert(4,33);
+# heap.insert(5,18);
+# heap.insert(6,27);
+# heap.insert(7,41);
+# heap.insert(8,42);
 # heap.print()
 # print()
 # print(heap.extract_min().priority)
