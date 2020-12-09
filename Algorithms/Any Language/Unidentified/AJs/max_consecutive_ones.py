@@ -24,6 +24,26 @@ def max_ones(array):
         i+=1
     return counter
 
+# Mine
+# def max_ones(array: list):
+#     # loop over the array
+#     # if the value is a 1
+#     # start a second while loop that updates the maxcount
+#     max_count = 0
+#     for i, v in enumerate(array):
+#         if v==1:
+#             j=i
+#             temp = 1
+#             while(j<len(array)-1):
+#                 if array[j+1]==1:
+#                     temp+=1
+#                     max_count = max(temp, max_count)
+#                 else: j=len(array)
+#                 j+=1
+    
+#     print(max_count)
+#     return max_count
+
             
 
 
