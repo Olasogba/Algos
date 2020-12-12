@@ -7,29 +7,17 @@ between i and j is at most k
 ([1,2,3,4,1], 3) => False
 '''
 
-def contains(ints: list, k: int):
-    # find a way to record the equal pairs and their indexes
-    # measure their differences and compare with k
-    # if you find at least one, return true
+def contains_hash_table(ints: list, k: int):
+    map = {} # map the number to its index
 
-    # store a list of the indexes in which an item occurs
-    # loop over the list comparing the indexes
-    # return true when a comparison resolves
-
-    map = {}
     for i, v in enumerate(ints):
-        if(map.get(v) != None):
-            map[v].append(i)
-        else: map[v]=[i]
-    
-    
-    for i in map.keys():
-        val = map.get(i)
-        if len(val) > 1:
-            v1 = ints[val[0]]
-            v2 = ints[val[1]]
-            if v1==v2:
-                if abs(val[0]-val[1])<=k: return True
+        if map.get(v) != None:
+            # we have found it before
+            if i-map.get(v)==k: return True
+            else: map[v]=i
+        else:
+            map[v] = i
+
     return False
 
 
@@ -45,7 +33,7 @@ def contains_n2(ints: list, k:int):
             j+=1
     return False
 
-def contains_kn(ints: list, k:int):
+def contains_kn(ints: list, k:int): # still n2 though
     # start a loop on i,
     # loop backwards with j while j >=0 && j-i<=k
     # compare the values of ints[i] and ints[j]
@@ -62,3 +50,4 @@ def contains_kn(ints: list, k:int):
 
 print(contains_kn([1,2,3,1,5], 3)) # true: 0, 3
 print(contains_kn([1,2,3,4,1], 3)) # false
+print(contains_hash_table([0,1,2,3,4,0,0,7,8,9,10,11,12,0], 1)) # true
