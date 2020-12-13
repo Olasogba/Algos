@@ -62,7 +62,7 @@ class PriorityQueue:
 
 
 
-# heap = PriorityQueue()
+heap = PriorityQueue()
 # heap.insert(1,100);
 # heap.insert(2,12);
 # heap.insert(3,39);

@@ -1,7 +1,7 @@
 # insert, dfs, bfs, find, contains
 import sys
 sys.path.append('C:/Users/User/Desktop/Algorithm Mastery/Data Structures/Stacks and Queues/AJs')
-import my_queue
+
 
 class Node:
     def __init__(self, value):
@@ -141,6 +141,37 @@ class BinarySearchTree:
 
         search(self.root)
         return results
+    
+    def invert(self, root:Node):
+        if root:
+            root.left, root.right = self.invert(root.right), self.invert(root.left)
+            return root
+    
+    def invertIterative(self):
+        stack = [self.root]
+        while(stack):
+            node = stack.pop()
+            if node:
+                node.left, node.right = node.right, node.left
+                stack+=node.left, node.right
+        return self.root 
+
+    def sameTree(self, root1: Node, root2: Node):
+        if root1==None and root2==None: return True
+        if root1!=None:
+            if root2==None: return False
+        if root2!=None:
+            if root1==None: return False
+        
+        print(root1.value, root2.value)
+        same = self.sameTree
+        return (root1.value==root2.value) & (same(root1.left, root2.left)) & (same(root1.right, root2.right))
+
+    def maximum_depth(self, root: Node):
+        if root==None: return 0
+        left = self.maximum_depth(root.left)
+        right = self.maximum_depth(root.right)
+        return max(left, right)+1 # 1 is for the root
                     
 
 
@@ -152,7 +183,14 @@ bst.insertRecursive(15)
 bst.insertRecursive(3)
 bst.insertRecursive(20)
 bst.insertRecursive(8)
-print(bst.bfs())
-print(bst.dfsPreOrder())
-print(bst.dfsPostOrder())
-print(bst.dfsInOrder())
+
+
+bst2 = BinarySearchTree()
+bst2.insertIterative(10)
+bst2.insertRecursive(6)
+bst2.insertRecursive(15)
+bst2.insertRecursive(3)
+bst2.insertRecursive(20)
+bst2.insertRecursive(8)
+
+print(bst2.maximum_depth(bst2.root))
