@@ -10,21 +10,25 @@
     - k: integer denoting the number of cars that have to be covered by the roof
  */
 
+function dilemma(list, k) {
+   // first sort
+   // measure the initial k
+   // slide through the list and compare
 
-/**
- * 
- * class Solution:
-    """
-    @param cars:  integer array of length denoting the parking slots where cars are parked
-    @param k: integer denoting the number of cars that have to be covered by the roof
-    @return: return the minium length of the roof that would cover k cars
-    """
-    def ParkingDilemma(self, cars, k):
-        # write your code here
-        cars.sort()
-        n = len(cars)
-        res = float('inf')
-        for i in range(n-k+1):
-            res = min(res, cars[i+k-1] - cars[i])
-        return res+1
- */
+   list = list.sort((a,b) => a-b)
+
+   let min = list[k-1]-list[0]
+   let temp = min
+
+   for(let i=k; i<list.length; i++) {
+      temp = list[i]-list[i-k+1]
+      min = Math.min(min, temp)
+   }
+
+   return min
+}
+
+
+console.log(dilemma([6,2,12,7], 3)) // 5
+console.log(dilemma([6,2,12,7], 2)) // 1
+console.log(dilemma([6,2,12,7,4,3,5], 3)) // 2
