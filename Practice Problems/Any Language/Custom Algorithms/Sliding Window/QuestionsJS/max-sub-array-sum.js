@@ -10,25 +10,25 @@
     [], 4 // null
     
 `
-log = (val) => console.log(val)
+log = (...val) => console.log(...val)
 
 function calc(arr, n) {
-    if(arr.length<1) return log(undefined)
+    if(arr.length==0) return null
+   let max = 0
 
-    let maxSum = 0
-    for(i=0; i<n; i++) {
-        maxSum+=arr[i]
-    }
+   // get the first n
+   for (let i=0; i<n; i++) {
+       max+=arr[i]
+   }
 
-    let tempSum = maxSum
-    for(let i=n; i<arr.length; i++) {
-        let left = arr[i-n]
-        let right = arr[i]
+   let temp = max
+   for(let i=n; i<arr.length; i++) {
+       temp = (temp-arr[i-n]) + arr[i]
+       max = Math.max(temp, max)
+   }
 
-        tempSum = (tempSum-left)+right
-        maxSum = Math.max(tempSum, maxSum)
-    }
-    log(maxSum)
+   log(max)
+   return max
 }
 
 calc([1,2,5,8,1,5],2) // 13

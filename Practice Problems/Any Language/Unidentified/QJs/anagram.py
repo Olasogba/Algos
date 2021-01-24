@@ -5,9 +5,11 @@ letters to get a different phrase or word)
 '''
 
 def anagram(s1: str, s2: str):
-    return None
+    s1=s1.replace(' ', '')
+    s2=s2.replace(' ', '')
+    return sorted(s1)==sorted(s2)
 
 
-# print(anagram('public relations', 'crap built on lies'))
-# print(anagram('dog', 'g ode'))
-# print(anagram('clint eastwood', 'old west action'))
+print(anagram('public relations', 'crap built on lies'))
+print(anagram('dog', 'g ode'))
+print(anagram('clint eastwood', 'old west action'))

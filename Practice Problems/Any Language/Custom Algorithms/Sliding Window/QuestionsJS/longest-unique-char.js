@@ -2,33 +2,39 @@
  Given a string, write a function that returns the longest sequence of
  unique characters within that string.
 `
-log = (val) => console.log(val)
+log = (...val) => console.log(...val)
 
 function uniqueChar(string) {
-    // get the longest sequence starting from the first character
-    // remove the initial and add the next
-    // keep adding the next until you reach a character that already exists
-    // in which case you move on to the next left
+    // first get the longest
+    // slide and compare values
+    // update after each slide
 
     let longest = ''
-    for(let char of string) {
-        if(longest.includes(char)) break
-        longest += char
+    for(let i of string) {
+        if(longest.includes(i)) break
+        longest+=i
     }
-
-    let i=longest.length
-    let currentSequence = longest
+    
+    let current = longest
+    let i =current.length
     while(i<string.length) {
-        if(!currentSequence.includes(string[i])) {
-            currentSequence += string[i]
-            longest = currentSequence.length >= longest.length ? currentSequence : longest
-            i++
+        let nextChar = string[i]
+        if(current.includes(nextChar)) {
+            current = current.replace(current[0], '')
         } else {
-            currentSequence = currentSequence.replace(currentSequence[0], '')
+            current += nextChar
+            longest = longest.length >= current.length ? longest : current
         }
+        // log(current, nextChar)
+        i++
     }
 
     return longest
+
 }
 
 log(uniqueChar('helloqwtybnmkpcvvthereyyouifhdbgqwertyuiopzxcvbnmkkkgutn'))
+log(uniqueChar('ABDEFGABEF'))
+log(uniqueChar('BBBB'))
+log(uniqueChar('GEEKSFORGEEKS'))
+// log('herouifdgqwtypzxbnmk'.length)

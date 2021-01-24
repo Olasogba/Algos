@@ -1,25 +1,20 @@
+'''
+Given two strings s and t, write a function to determine if t is an anagram of s.
+
+For example
+s = "anagram", t = "nagaram", return true
+s= "rat", t = "car", return false
+
+Note: 
+You may assume the string contains only lowercase alphabets.
+
+Follow up:
+What if the inputs contain unicode characters? How would you adapt your solution
+to such case?
+'''
+
 def valid_anagram(s1: str, s2: str):
-    # simply create two frequency counters and compare their values
-
-    map1 = {}
-    map2 = {}
-
-    for i in s1:
-        if map1.get(i) != None:
-            map1[i] +=1
-        else:
-            map1[i] = 1
-
-    for i in s2:
-        if map2.get(i) != None:
-            map2[i] +=1
-        else:
-            map2[i] = 1
     
-    for i, v in enumerate(map1):
-        if map1.get(v) != map2.get(v):
-            return False
-
     return True
 
 

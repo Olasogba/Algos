@@ -1,6 +1,7 @@
-log = (...val) => console.log(val)
+log = (...val) => console.log(...val)
 
 function areSimilar(a, b) {
+    // for a pair swap we must have at most two incorrect indexes in the chosen comparison array
     // compare each element of both arrays
     // save the indexes whose elements are not the same
     // this indexes must total 2 for one valid swap.

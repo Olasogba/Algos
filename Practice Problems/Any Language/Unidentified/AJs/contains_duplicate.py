@@ -1,4 +1,6 @@
 '''
+SLIDING WINDOW PATTERN
+
 Given an array of integers and an integer k, find out whther there are two distinct
 indeces i and j in the array such that nums[i]=nums[j] and the absolute difference
 between i and j is at most k

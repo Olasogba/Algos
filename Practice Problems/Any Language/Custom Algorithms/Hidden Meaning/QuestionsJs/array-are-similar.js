@@ -20,18 +20,13 @@ areSimilar(a, b) = false.
 Any swap of any two elements either in a or in b won't make a and b equal.
 
 `
-log = (...val) => console.log(val)
+log = (...val) => console.log(...val)
 
-/**
- * To swap at most one pair of elements thn
- * only two elements may be differently placed.
- * get the indexes of these two elements
- * make sure they equal
- */
+
 function areSimilar(a,b) {
     
 }
 
-areSimilar([1, 2, 2], [2, 1, 1])
-areSimilar([1, 2, 3], [2, 1, 3])
-areSimilar([1, 2, 3], [1, 2, 3])
+log(areSimilar([1, 2, 2], [2, 1, 1])) // false
+log(areSimilar([1, 2, 3], [2, 1, 3])) // true
+log(areSimilar([1, 2, 3], [1, 2, 3])) // true
