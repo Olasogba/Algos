@@ -70,6 +70,6 @@
     }
  
  
- console.log(dilemma([6,2,12,7], 3)) // 5
+ console.log(dilemma_mine([6,2,12,7], 3)) // 5
  console.log(dilemma([6,2,12,7], 2)) // 1
  console.log(dilemma([6,2,12,7,4,3,5], 3)) // 2
