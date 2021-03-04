@@ -11,22 +11,7 @@
 const log = (...val) => console.log(...val)
 
 function search(ints, value) {
-    var left = 0
-    var right = ints.length-1
     
-    while(left<=right) {
-        var mid = Math.floor((left+right)/2)
-        // log(mid)
-        if(ints[mid]<value) {
-            left=mid+1
-        } 
-        else if(ints[mid]>value) {
-            right=mid-1
-        }
-        else return mid
-    }
-    
-    return -1
 }
 
 log(search([1,2,3,4,5,6], 4)) //3

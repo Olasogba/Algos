@@ -7,3 +7,9 @@ The given text:
 
 SAs: case-sensitive/case-insensitive
 `
+log = (...val) => console.log(...val)
+function process(string) {
+    
+}
+
+process("It used to take hours or days to do something similar in the past. How is it possible to deploy, deploy and configure, configure and connect and finally build the back-end cloud services as well as configure the front-end so quickly with so much less lines of code?")

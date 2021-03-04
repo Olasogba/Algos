@@ -1,0 +1,48 @@
+Big O => O(mrg(n)) => 
+    f(n) where 0 <= f(n) <= c*mrg(n) for values min-n --> n
+
+1. f(n) == Our algorithm
+
+2. n == input provided to our algorithm
+
+3. c is just a positive constant eligible to be multiplied with mrg of n 
+    (such as that it makes our function/algorithm come under the bound of mrg(n))
+
+4. mrg(n) => maximum influencing component of our algorithm/function. (maximum rate of growth component for f(n) at larger values of n)
+
+
+- f(n) must always be less than c*mrg(n)
+- n will range from a given minimum value to the highest possible value
+
+BIG O Objective
+To find the minimum c*mrg(n) that's greater than [the natural rate of growth of] f(n)
+
+Ex. 1
+Find upper bound f(n) = n
+NOTE: using a constant 10 in 10(n) cannot upper bound f(n) because:
+The very purpose/definition of an asymptotic bound is all about modulating constants
+to achieve a behaviour because the constants are internal to the very definition of 
+choosing a bound (bound meaning upper bound in this case). It does not make sense
+because we could choose any "c" value, because it's about behaviour.
+Sol. 1
+o(mrg(n)) => 0 <= n <= 1*mrg(n) for 1 --> n.
+
+Ex. 2
+f(n) = n^2 + 1
+Sol: n^2 + 1 <= 2*n^2 for 1 --> n where c==2, mrg(n)==1*n^2, and n starts from 1
+
+Ex. 3
+f(n) = n^4 + 100(n^2) + 50
+Sol: f(n) <= 2n^4 for 50 --> n where c==2, mrg(n)==1*n^4, and n starts from 50
+
+Ex. 4
+f(n) = 2(n^3) - 2(n^2)
+Sol: f(n) <= 2(n^3) for 1 --> n where c==2, mrg(n)==1*n^3, n starts from 1
+
+Ex. 5
+f(n) = n
+Sol: f(n) <= n for 1 --> n where c==1, mrg(n)==1*n, and n starts from 1
+
+Ex. 6
+f(n)=416
+Sol: f(n) <= 1*1 where c==1, mrg(n)==1, 1 --> 416, n starts from 1
