@@ -1,7 +1,12 @@
-def TowersOfHanoi(numberOfDisks, startPeg=1, endPeg=3):
-    if numberOfDisks:
-        TowersOfHanoi(numberOfDisks-1, startPeg, 6-startPeg-endPeg)
-        print('Move disk {} from peg {} to peg {}'.format(numberOfDisks, startPeg, endPeg))
-        TowersOfHanoi(numberOfDisks-1, 6-startPeg-endPeg, endPeg)
+def tower_of_hanoi(disks, source, dest, aux):
+    return
 
-TowersOfHanoi(6)
+
+# tower_of_hanoi(10, 'Tower A', 'Tower B', 'Tower C')
+
+
+
+
+
+
+#  recurrence relation proof
