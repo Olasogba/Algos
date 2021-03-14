@@ -24,159 +24,54 @@ import java.io.*;
  
 class ConnectedCells2
 {
-    static final int n = 5;
-    static final int m = 5;
-    
-    // stores information about which cell
-    // are already visited in a particular BFS
-    static final int visited[][] = new int [n][m];
-    
-    // result stores the final result grid
-    static final int result[][] = new int [n][m];
-    
-    // stores the count of
-    // cells in the largest 
-    // connected component
-    static int COUNT;
-    
-    // Function checks if a cell 
-    // is valid i.e it is inside 
-    // the grid and equal to the key
-    static boolean is_valid(int x, int y, 
-                            int key, 
-                            int input[][])
-    {
-        if (x < n && y < m &&
-            x >= 0 && y >= 0) 
-        {
-            if (visited[x][y] == 0 && 
-                input[x][y] == key)
-                return true;
-            else
-                return false;
+    public static boolean isValid(int row, int col, int rowLength, int colLength) {
+        return row<rowLength && col<colLength 
+        && row>=0 && col>=0 ;
+    }
+
+
+    // THis search traverses once.
+    static int rs(int[][] matrix , int i , int j){
+        if(i<0 || j<0 || i >= matrix.length || j >= matrix[i].length)
+            return 0;
+        if(matrix[i][j] == 0)
+            return 0;
+        int size = 1;
+        matrix[i][j] = 0;
+        printResult(matrix);
+
+
+        // for(int r = i-1; r<=i+1;r++){
+        //     for(int c = j-1; c <= j+1; c++){
+        //         if(r != i || c != j){
+        //             size += rs(matrix,r,c);
+        //         }
+        //     }
+        // }
+
+        int[][] directions = new int[][] {{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
+
+        for(Integer k=0; k<8; k++) {
+            int newi = i+directions[k][0];
+            int newj = j+directions[k][1];
+            
+            size += rs(matrix,newi,newj);  
         }
-        else
-            return false;
+        return size;
     }
-    
-    // BFS to find all cells in
-    // connection with key = input[i][j]
-    static void BFS(int x, int y, int i,
-                    int j, int input[][])
-    {
-        // terminating case for BFS
-        if (x != y)
-            return;
-    
-        visited[i][j] = 1;
-        COUNT++;
-    
-        // x_move and y_move arrays
-        // are the possible movements
-        // in x or y direction
-        int x_move[] = { 0, 0, 1, -1 };
-        int y_move[] = { 1, -1, 0, 0 };
-    
-        // checks all four points 
-        // connected with input[i][j]
-        for (int u = 0; u < 4; u++)
-            if ((is_valid(i + y_move[u], j + x_move[u], x, input)) == true)
-                BFS(x, y, i + y_move[u],
-                        j + x_move[u], input);
-    }
-    
-    // called every time before 
-    // a BFS so that visited 
-    // array is reset to zero
-    static void reset_visited()
-    {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < m; j++)
-                visited[i][j] = 0;
-    }
-    
-    // If a larger connected component
-    // is found this function is 
-    // called to store information 
-    // about that component.
-    static void reset_result(int key,
-                            int input[][])
-    {
-        for (int i = 0; i < n; i++) 
-        {
-            for (int j = 0; j < m; j++) 
-            {
-                if (visited[i][j] ==1 && 
-                    input[i][j] == key)
-                    result[i][j] = visited[i][j];
-                else
-                    result[i][j] = 0;
-            }
-        }
-    }
-    
-    // function to print the result
-    static void print_result(int res)
-    {
-        System.out.println ("The largest connected " + 
-                        "component of the grid is :" +
-                                                res );
-    
-        // prints the largest component
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = 0; j < m; j++) 
-            {
-                if (result[i][j] != 0)
-                    System.out.print(result[i][j] + " ");
-                else
-                    System.out.print(". ");
-            }
-            System.out.println();
-        }
-    }
-    
-    // function to calculate the 
-    // largest connected component
-    static void computeLargestConnectedGrid(int input[][])
-    {
-        int current_max = Integer.MIN_VALUE;
-    
-        for (int i = 0; i < n; i++) 
-        {
-            for (int j = 0; j < m; j++)
-            {
-                reset_visited();
-                COUNT = 0;
-    
-                // checking cell to the right
-                if (j + 1 < m)
-                    BFS(input[i][j], input[i][j + 1], 
-                                        i, j, input);
-    
-                // updating result
-                if (COUNT >= current_max)
-                {
-                    current_max = COUNT;
-                    reset_result(input[i][j], input);
-                }
-                reset_visited();
-                COUNT = 0;
-    
-                // checking cell downwards
-                if (i + 1 < n)
-                    BFS(input[i][j],
-                        input[i + 1][j], i, j, input);
-    
-                // updating result
-                if (COUNT >= current_max) 
-                {
-                    current_max = COUNT;
-                    reset_result(input[i][j], input);
+
+    static int connectedCell(int[][] matrix,int n , int m ) {
+        int max = 0;
+        for(int i  = 0 ;i<n;i++){
+            for(int j = 0 ;j<m;j++){
+                if(matrix[i][j] == 1){
+                    int size = rs(matrix , i ,j);
+                    max = Math.max(size , max);
                 }
             }
         }
-        print_result(current_max);
+        System.out.println(max);
+        return max;
     }
     // Driver Code
     public static void main(String args[])
@@ -187,15 +82,42 @@ class ConnectedCells2
         //                 {3, 3, 2, 1, 2, 2, 2, 2},
         //                 {3, 1, 3, 1, 1, 4, 4, 4},
         //                 {1, 1, 3, 1, 1, 4, 4, 4}};
-        int input[][] = {{1,1,0,0,0},
-                        {0,1,1,0,0},
-                        {0,0,1,0,1},
-                        {1,0,0,0,1},
-                        {0,1,0,1,1}};
+        // int input[][] = {{1,1,0,0,0},
+        //                 {0,1,1,0,0},
+        //                 {0,0,1,0,1},
+        //                 {1,0,0,0,1},
+        //                 {0,1,0,1,1}};
+
+        int input[][] = {{0, 1, 0, 0, 0, 0, 1, 1, 0},
+                        {1, 1, 0, 0, 1, 0, 0, 0, 1},
+                        {0, 0, 0, 0, 1, 0, 1, 0, 0},
+                        {0, 1, 1, 1, 0, 1, 0, 1, 1},
+                        {0, 1, 1, 1, 0, 0, 1, 1, 0},
+                        {0, 1, 0, 1, 1, 0, 1, 1, 0},
+                        {0, 1, 0, 0, 1, 1, 0, 1, 1},
+                        {1, 0, 1, 1, 1, 1, 0, 0, 0}};
     
         // function to compute the largest
         // connected component in the grid
-        computeLargestConnectedGrid(input);
+        connectedCell(input, 8,9);
+    }
+
+    static void printResult(int[][] matrix) {
+        // loop over visited
+        // where is 1 print value, else pritn '.'
+        for(var i=0; i<matrix.length; i++) {
+            for(var j=0; j<matrix[i].length; j++) {
+                if(matrix[i][j]==0) {
+                    System.out.print(". ");
+                } else {
+                    System.out.print(((Integer)matrix[i][j]).toString()+' ');
+                }
+            }
+            System.out.println();
+        }
+
+        System.out.println();
+
     }
 }
 

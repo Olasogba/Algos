@@ -16,4 +16,8 @@ Sample output: 5
 
 
 '''
+# pick a one node
+# search that node and record its size
+# after search update value
+
 

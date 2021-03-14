@@ -25,16 +25,11 @@ function collectOddValues(arr) {
 
 }
 
-collectOddValues([1,2,3,4,5,6,7,8,9])
+collectOddValuesPureRecurse([1,2,3,4,5,6,7,8,9])
 
-function collectOddValuesPureRecurse(arr) { 
-    let newArr = []
-
-    if(input.length == 0) return newArr
-
-    if(input[0] % 2 != 0) result.push(arr[0])
-
-    newArr = newArr.concat(collectOddValuesPureRecurse(arr.slice(1)))
-
-    return log(newArr)
+function collectOddValuesPureRecurse(arr) {
+    if(arr.length==0) return arr
+    var results = []
+    if(arr[0]%2!=0) results.push(arr[0])
+    return results.concat(collectOddValuesPureRecurse(arr.slice(1)))
 }
