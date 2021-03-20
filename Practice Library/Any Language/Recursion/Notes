@@ -1,0 +1,62 @@
+* All possible solutions (not bothering about optimization)
+* In how many ways?
+
+---
+
+Backtracking is a general algorithm for finding all (or some) solutions 
+to some computational problems, notably constraint satisfaction problems, 
+that incrementally builds candidates to the solutions, and abandons a 
+candidate ("backtracks") as soon as it determines that the candidate 
+cannot possibly be completed to a valid solution.[1]
+
+
+---
+
+
+Backtracking is an important tool for solving constraint satisfaction problems
+ such as crosswords, verbal arithmetic, Sudoku, and many other puzzles. It is 
+ often the most convenient (if not the most efficient[citation needed]) 
+ technique for parsing,[3] for the knapsack problem and other --COMBINATORIAL --
+ optimization problems. It is also the basis of the so-called logic programming 
+ languages such as Icon, Planner and Prolog.
+
+
+---
+
+https://www.gatevidyalay.com/recursion-tree-solving-recurrence-relations/
+
+
+The way I think of backtracking is as follows:
+
+1. Make a change
+2. Recurse
+3. Undo the change
+
+If at any point we reach the goal state, return true/print/whatever.
+
+- So for the sudoku problem: For all possible squares on the board see if we can add any value between 1-9.
+ If we can, add the value and recurse for the rest of the board. Then undo the changes by making the board blank again.
+ Goal state is when we have successfully filled in last square
+
+- For n queens: Iterate through the first row. If we can place a queen at a given column place it 
+and recurse for the remaining rows. Then undo the change by removing the queen and moving to the 
+next column. Goal is when we have placed queen on nth row
+
+- Print all possible permutations: Initialize an empty String for results. In the input string
+iterate through each character. For each character, remove it from input and add it to result 
+and recurse. Then remove the character from result and insert it back in same position in input string. Goal is when result size = n.
+
+- Given n print all sets of valid parentheses that amount to n: Start with blank input string 
+and 2 numbers i, j initialized to n that denote number of opening/closing parentheses remaining
+ - you can add opening parentheses to the string if i>0. You can add closing parentheses if j>i.
+ If you can add opening parentheses, add it to stringbuilder, recurse and then remove it from end
+ of stringbuilder. If you can add closing parentheses add it to stringbuilder, recurse and then 
+ remove it from end of stringbuilder. Goal is when both i, j =0.
+
+
+- Print all subsets of a set: For each character in set, remove it from input set add it to result
+set and if it has not been printed already, print (goal is any set that has not been printed already).
+Then recurse for remaining elements. Then remove element from result set and add it back to input set.
+
+
+Pretty much all the backtracking problems I have done follows this pattern.

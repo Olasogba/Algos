@@ -36,4 +36,6 @@ collectOddValues([1,2,3,4,5,6,7,8,9])
 BACKTRACKING
 Trace, while a condition is valid,
 Return (backtrack) when the condition fails. 
-Repeat the operation for each piece in the set
+Repeat the operation for each piece in the ...?
+SEE HERE:
+https://www.cis.upenn.edu/~matuszek/cit594-2012/Pages/backtracking.html

@@ -1,3 +1,14 @@
-using System;
+public class SystemRoles
+{
+    public const string OrganizationAdmin = "Organization Admin";
+    public const string TevetInstituteRector = "Institute Rector";
+    public const string TevetInstituteExamsAndRecordsAdmin = "Institute Exams and Records Admin";
+}
 
-Console.Write((Math.Pow(100, Convert.ToDouble(1)/2)));
+
+var systemRoles = typeof(SystemRoles).GetFields().Select(c => c.GetValue(null));
+
+foreach (var item in systemRoles)
+{
+    Console.WriteLine(item);
+}

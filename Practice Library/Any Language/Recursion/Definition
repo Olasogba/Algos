@@ -1,0 +1,41 @@
+- What recursion is
+ - Recursion is a process (a function in our case) that calls itself.
+- The two essential componenets of a recursive function
+ - Base case
+ - Different Input
+
+- Visualize the call stack to better debug and understand recursive functions
+- Use helper methid recursion and pure recursion to solve more difficult
+  problems.
+
+function factorial(n) {
+    if (n == 1) return 1
+    return n * factorial(n-1)
+}
+
+function collectOddValues(arr) {
+    let result = []
+
+    function helper(helperInput) {
+        if(helperINput.length === 0) {
+            return
+        }
+        if(helperInput[0] % 2 !== 0) {
+            result.push(helperInput[0])
+        }
+        helper(helperInput.slice(1))
+    }
+    helper(arr)
+
+    return result;
+}
+
+collectOddValues([1,2,3,4,5,6,7,8,9])
+
+
+BACKTRACKING
+Trace, while a condition is valid,
+Return (backtrack) when the condition fails. 
+Repeat the operation for each piece in the ...?
+SEE HERE:
+https://www.cis.upenn.edu/~matuszek/cit594-2012/Pages/backtracking.html

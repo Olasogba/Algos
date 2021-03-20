@@ -41,6 +41,10 @@ This is the only way in which 10 can be expressed as the sum of unique squares.
 
 # have an array of possible factors
 # for each factor
-# 
-# 
+# bounding fn:
+    # x < 0;
+
+# backtracking step:
+    # target: when X == 0
+    # 
 # 
