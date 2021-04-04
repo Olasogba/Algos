@@ -60,3 +60,10 @@ Then recurse for remaining elements. Then remove element from result set and add
 
 
 Pretty much all the backtracking problems I have done follows this pattern.
+
+
+https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/index.html
+When writing a recursive function, you should think in a top-down manner. 
+Do not worry about how the recursive call solves the sub-problem. 
+Simply accept that it will solve it correctly. 
+Use this result as though you had called some library function, to correctly solve the original problem.
