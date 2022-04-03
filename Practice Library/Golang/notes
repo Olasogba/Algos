@@ -1,0 +1,44 @@
+https://www.youtube.com/watch?v=fsbm1FOSDJ0&list=PL0q7mDmXPZm7s7weikYLpNZBKk5dCoWm6&index=3
+
+A Kubernetes operator is an application-specific controller that extends the functionality of the Kubernetes API to create, configure, and manage instances of complex applications on behalf of a Kubernetes user.
+
+The site reliability engineer or operations team typically writes the software to 
+manage an application, but an operator is designed to take human operational knowledge 
+and encode it into software to manage and deploy Kubernetes workloads while eliminating manual tasks. 
+
+The creation of an operator often starts with automating the application’s installation and self-service provisioning, and follows with more complex automation capabilities.
+
+There is also a Kubernetes operator software development kit (SDK) that can help you develop your own operator. 
+The SDK provides the tools to build, test, and package operators with a choice of creating operators using Helm 
+charts, Ansible Playbooks or Golang
+
+
+LOOPS
+https://yourbasic.org/golang/for-loop/
+
+Golang design 
+https://golangbyexample.com/all-design-patterns-golang/
+--
+
+
+
+GO templating
+https://www.google.com/search?q=go+templating&oq=go+templating&aqs=edge..69i57l2j69i60l5.1887j0j4&sourceid=chrome&ie=UTF-8
+
+
+
+Ambassador controller
+Argo rollouts
+Horizontal pod autoscaling on the operator
+
+
+
+Graphs
+                ADJACENCY MATRUX    ADJACENCY LIST
+Space           Horrible            OK
+Edge            Great               OK
+Add Vertex      Horrible            Great
+Remove Vertex   Horrible            OK
+Add Edge        Great               Great
+Remove Edge     Great               OK
+

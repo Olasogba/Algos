@@ -21,4 +21,4 @@ function removeAndEncode(string, k) {
     return ans
 }
 
-removeAndEncode('aabbcc', 2)
+console.log(removeAndEncode('aabbcc', 2))

@@ -3,3 +3,9 @@
 **/resources
 **/target
 **/**.mp4
+.cph/**
+bak
+n
+s
+.mypy_cache/
+**.bin

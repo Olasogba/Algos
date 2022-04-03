@@ -10,12 +10,12 @@ namespace DataStructures.Mike.HashMap
         private int _count;
         public HashMapArray(int capacity)
         {
-            _array = new HashMapArrayNode<TKey, TValue>[capacity];
+            _array = new HashMapArrayNode<TKey, TValue>[capacity]; // simple linked list to hold the diff keys
 
             // initialize array items
             for (int i = 0; i < _array.Length; i++)
             {
-                _array[i] = new HashMapArrayNode<TKey, TValue>();
+                _array[i] = new HashMapArrayNode<TKey, TValue>(); // simple linked list to hold the key value pairs
             }
         }
 

@@ -66,7 +66,7 @@ class Graph {
         return result
     }
 
-    dfs(start) {
+    bfs(start) {
         let queue = [start]
         let results = []
         let visited = {}
@@ -105,3 +105,4 @@ g.addEdge('E', 'F')
 
 log(g.dfsRecursive('A'))
 //log(g.dfsIterative('A'))
+log(g.bfs('A'))
